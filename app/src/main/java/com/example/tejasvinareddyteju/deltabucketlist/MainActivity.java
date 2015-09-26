@@ -32,6 +32,8 @@ public class MainActivity extends Activity {
             "Test 5"
     };
 
+    public BucketListDriver bucketListDriver = new BucketListDriver();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
