@@ -1,9 +1,12 @@
 package com.example.tejasvinareddyteju.deltabucketlist;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class DestinationInformationActivity extends Activity {
 
@@ -11,6 +14,13 @@ public class DestinationInformationActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_destination_information);
+
+        Intent intent = getIntent();
+        String message = intent.getStringExtra("DESTINATION_TO_VIEW");
+
+        // Create the text view
+        TextView textView = (TextView) findViewById(R.id.destinationName);
+        textView.setText(message);
     }
 
     @Override

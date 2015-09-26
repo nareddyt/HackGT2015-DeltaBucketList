@@ -69,6 +69,7 @@ public class MainActivity extends Activity {
                 Toast.makeText(getApplicationContext(), "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(view.getContext(), DestinationInformationActivity.class);
+                intent.putExtra("DESTINATION_TO_VIEW", itemValue);
                 startActivity(intent);
             }
 
