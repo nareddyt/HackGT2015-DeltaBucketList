@@ -24,4 +24,13 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/imageView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/destinationCode"
+        android:layout_below="@+id/destinationName"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

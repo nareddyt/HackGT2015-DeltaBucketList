@@ -10,17 +10,21 @@ import android.widget.TextView;
 
 public class DestinationInformationActivity extends Activity {
 
+
+    private String message;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_destination_information);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra("DESTINATION_TO_VIEW");
+        message = intent.getStringExtra("DESTINATION_TO_VIEW");
 
         // Create the text view
         TextView textView = (TextView) findViewById(R.id.destinationName);
         textView.setText(message);
+
+        //TODO Set destinationCode based on bucketlistdriver
     }
 
     @Override
@@ -38,7 +42,9 @@ public class DestinationInformationActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_delete_bucketlist_item) {
+            System.out.println("Bucket List Item Deleted");
+            //Delete "message" from bucketlist
             return true;
         }
 

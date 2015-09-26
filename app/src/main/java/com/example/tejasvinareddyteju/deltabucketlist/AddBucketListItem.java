@@ -31,20 +31,7 @@ public class AddBucketListItem extends Activity {
 
         // Defined Array values to show in ListViews
         // Import all the values over here
-        String[] possibleLocations = new String[] { "Android List View",
-                "Adapter implementation",
-                "Simple List View In Android",
-                "Create List View Android",
-                "Android Example",
-                "List View Source Code",
-                "List View Array Adapter",
-                "Android Example List View",
-                "Test 1",
-                "Test 2",
-                "Test 3",
-                "Test 4",
-                "Test 5"
-        };
+        String[] possibleLocations = new String[] { "New York City", "Atlanta", "Los Angeles", "Dallas", "Las Vegas"};
 
         // Define a new Adapter
         // First parameter - Context
@@ -74,7 +61,7 @@ public class AddBucketListItem extends Activity {
 
                 // Show Alert
                 Toast.makeText(getApplicationContext(),
-                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
+                        "Added destination: " + itemValue, Toast.LENGTH_SHORT)
                         .show();
 
             }
