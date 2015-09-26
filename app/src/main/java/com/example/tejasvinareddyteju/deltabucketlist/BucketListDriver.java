@@ -46,7 +46,6 @@ public class BucketListDriver {
         }
         return destr.toArray(new String[destr.size()]);
     }
-
     public void removeDestination(String name) {
         for(int i = 0; i < bucketList.size(); i++) {
             if (bucketList.get(i).getName().equals(name)) {
