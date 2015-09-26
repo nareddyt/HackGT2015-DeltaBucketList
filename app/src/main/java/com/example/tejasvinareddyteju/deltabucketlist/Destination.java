@@ -5,7 +5,6 @@ package com.example.tejasvinareddyteju.deltabucketlist;
  */
 public class Destination {
     private String name;
-    private String airportCode;
 
     public Destination(String name) {
         this.name = name;
@@ -15,8 +14,20 @@ public class Destination {
         return name;
     }
 
-    public String getCode(){
-        return airportCode;
+    public String getAirportCode() {
+        String code = "NULL";
+        if (name.equals("New York City")) {
+            code = "JFK";
+        } else if (name.equals("Atlanta")) {
+            code = "ATL";
+        } else if (name.equals("Las Angeles")) {
+            code = "LAX";
+        } else if (name.equals("Dallas")) {
+            code = "DFW";
+        } else if (name.equals("Las Vegas")) {
+            code = "LAS";
+        }
+        return code;
     }
 
 }
