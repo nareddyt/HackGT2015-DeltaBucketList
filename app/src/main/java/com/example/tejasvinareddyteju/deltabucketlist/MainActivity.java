@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
 
     //TODO
     public BucketListDriver bucketListDriver = new BucketListDriver();
-    public String[] getUserBucketListItems = bucketListDriver.bucketListToArray();
+    public String[] userBucketListItems = bucketListDriver.bucketListToArray();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

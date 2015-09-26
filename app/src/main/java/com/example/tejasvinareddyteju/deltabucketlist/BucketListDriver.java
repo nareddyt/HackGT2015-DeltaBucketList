@@ -5,7 +5,6 @@ package com.example.tejasvinareddyteju.deltabucketlist;
  */
 import java.util.ArrayList;
 public class BucketListDriver {
-
     private ArrayList<Destination> bucketList = new ArrayList<Destination>();
     private ArrayList<Destination> possibleDestinations = new ArrayList<Destination>();
 
@@ -36,6 +35,7 @@ public class BucketListDriver {
         for (Destination d: bucketList) {
             destr.add(d.getName());
         }
+
         return destr.toArray(new String[destr.size()]);
     }
 
