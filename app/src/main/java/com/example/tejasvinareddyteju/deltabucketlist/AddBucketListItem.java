@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class AddBucketListItem extends Activity {
-    ListView listView;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class AddBucketListItem extends Activity {
 
         // Defined Array values to show in ListViews
         // Import all the values over here
-        String[] values = new String[] { "Android List View",
+        String[] possibleLocations = new String[] { "Android List View",
                 "Adapter implementation",
                 "Simple List View In Android",
                 "Create List View Android",
@@ -53,7 +53,7 @@ public class AddBucketListItem extends Activity {
         // Forth - the Array of data
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, values);
+                android.R.layout.simple_list_item_1, android.R.id.text1, possibleLocations);
 
 
         // Assign adapter to ListView
