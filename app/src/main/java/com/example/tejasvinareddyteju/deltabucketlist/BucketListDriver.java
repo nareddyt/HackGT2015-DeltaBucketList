@@ -5,13 +5,13 @@ package com.example.tejasvinareddyteju.deltabucketlist;
  */
 import java.util.ArrayList;
 public class BucketListDriver {
-    ArrayList<Destination> bucketList = new ArrayList<Destination>();
-    ArrayList<Destination> possibleDestinations = new ArrayList<Destination>();
+    private ArrayList<Destination> bucketList = new ArrayList<Destination>();
+    private ArrayList<Destination> possibleDestinations = new ArrayList<Destination>();
 
     public BucketListDriver() {
         possibleDestinations.add(new Destination("New York City"));
         possibleDestinations.add(new Destination("Atlanta"));
-        possibleDestinations.add(new Destination("Los Angelas"));
+        possibleDestinations.add(new Destination("Los Angeles"));
         possibleDestinations.add(new Destination("Dallas"));
         possibleDestinations.add(new Destination("Las Vegas"));
     }
@@ -30,8 +30,20 @@ public class BucketListDriver {
         return null;
     }
 
-    public Destination[] toArray() {
-        return (Destination[]) bucketList.toArray();
+    public String[] bucketListToArray() {
+        ArrayList<String> destr = new ArrayList<String>();
+        for (Destination d: bucketList) {
+            destr.add(d.getName());
+        }
+        return destr.toArray(new String[destr.size()]);
+    }
+
+    public String[] possibleDestinationsToArray() {
+        ArrayList<String> destr = new ArrayList<String>();
+        for (Destination d: possibleDestinations) {
+            destr.add(d.getName());
+        }
+        return destr.toArray(new String[destr.size()]);
     }
 
     public void removeDestination(String name) {
