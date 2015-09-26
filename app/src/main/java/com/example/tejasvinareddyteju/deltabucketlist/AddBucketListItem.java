@@ -27,7 +27,7 @@ public class AddBucketListItem extends Activity {
         setContentView(R.layout.activity_add_bucket_list_item);
 
         // Get ListView object from xml
-        listView = (ListView) findViewById(R.id.listView);
+        listView = (ListView) findViewById(R.id.addLocationsListView);
 
         // Defined Array values to show in ListViews
         // Import all the values over here
