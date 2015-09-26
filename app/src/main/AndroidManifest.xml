@@ -26,7 +26,19 @@
         </activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" >
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.tejasvinareddyteju.deltabucketlist.MainActivity" />
+        </activity>
+        <activity
+            android:name=".DestinationInformationActivity"
+            android:label="@string/title_activity_destination_information"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.tejasvinareddyteju.deltabucketlist.MainActivity" />
         </activity>
     </application>
 

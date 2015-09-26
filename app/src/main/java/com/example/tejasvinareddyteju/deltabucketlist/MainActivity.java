@@ -14,7 +14,23 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-    ListView listView;
+    private ListView listView;
+    // Defined Array values to show in ListViews
+    // Import all the values over here
+    public String[] userBucketListItems = new String[] { "Android List View",
+            "Adapter implementation",
+            "Simple List View In Android",
+            "Create List View Android",
+            "Android Example",
+            "List View Source Code",
+            "List View Array Adapter",
+            "Android Example List View",
+            "Test 1",
+            "Test 2",
+            "Test 3",
+            "Test 4",
+            "Test 5"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,23 +39,6 @@ public class MainActivity extends Activity {
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.bucketlistListView);
 
-        // Defined Array values to show in ListViews
-        // Import all the values over here
-        String[] values = new String[] { "Android List View",
-                "Adapter implementation",
-                "Simple List View In Android",
-                "Create List View Android",
-                "Android Example",
-                "List View Source Code",
-                "List View Array Adapter",
-                "Android Example List View",
-                "Test 1",
-                "Test 2",
-                "Test 3",
-                "Test 4",
-                "Test 5"
-        };
-
         // Define a new Adapter
         // First parameter - Context
         // Second parameter - Layout for the row
@@ -47,7 +46,7 @@ public class MainActivity extends Activity {
         // Forth - the Array of data
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, values);
+                android.R.layout.simple_list_item_1, android.R.id.text1, userBucketListItems);
 
 
         // Assign adapter to ListView
@@ -61,16 +60,17 @@ public class MainActivity extends Activity {
                                     int position, long id) {
 
                 // ListView Clicked item index
-                int itemPosition     = position;
+                int itemPosition = position;
 
                 // ListView Clicked item value
-                String  itemValue    = (String) listView.getItemAtPosition(position);
+                String itemValue = (String) listView.getItemAtPosition(position);
 
                 // Show Alert
-                Toast.makeText(getApplicationContext(),
-                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
-                        .show();
+                Toast.makeText(getApplicationContext(), "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_SHORT).show();
 
+                Intent intent = new Intent(view.getContext(), DestinationInformationActivity.class);
+                intent.putExtra("DESTINATION_TO_VIEW", itemValue);
+                startActivity(intent);
             }
 
         });

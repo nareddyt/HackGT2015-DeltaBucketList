@@ -7,50 +7,15 @@
     tools:context="com.example.tejasvinareddyteju.deltabucketlist.Settings"
     android:id="@+id/whatisthis">
 
-    <SeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
-        android:layout_below="@+id/prioritizelabel"
-        android:layout_alignEnd="@+id/sliderlabel2"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Price"
-        android:id="@+id/sliderlabel1"
-        android:layout_below="@+id/seekBar"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Popularity"
-        android:id="@+id/sliderlabel2"
-        android:layout_below="@+id/seekBar"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Prioritize Destinations By:"
-        android:id="@+id/prioritizelabel"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Notifications"
         android:id="@+id/notificationsettingslabel"
-        android:layout_below="@+id/sliderlabel1"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="27dp" />
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,8 +23,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="How Often?"
         android:id="@+id/notificationlabel1"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/notificationsettingslabel"
-        android:layout_alignParentStart="true" />
+        android:layout_alignEnd="@+id/seekBar" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,7 +34,8 @@
         android:text="How do you want to be notified?"
         android:id="@+id/notificationlabel2"
         android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/seekBar" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -78,7 +45,8 @@
         android:id="@+id/editText"
         android:layout_below="@+id/notificationlabel2"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="41dp" />
+        android:layout_marginTop="41dp"
+        android:layout_alignEnd="@+id/notificationlabel2" />
 
     <Switch
         android:layout_width="wrap_content"
@@ -97,6 +65,15 @@
         android:id="@+id/emailsettinglabel"
         android:layout_below="@+id/notificationlabel2"
         android:layout_alignParentStart="true"
-        android:checked="false" />
+        android:checked="false"
+        android:layout_alignEnd="@+id/popupsettinglabel" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar"
+        android:layout_below="@+id/notificationlabel1"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/notificationsettingslabel" />
 
 </RelativeLayout>

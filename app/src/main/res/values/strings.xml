@@ -5,4 +5,5 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_bucket_list_item">AddBucketListItem</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_destination_information">Destination Information</string>
 </resources>
