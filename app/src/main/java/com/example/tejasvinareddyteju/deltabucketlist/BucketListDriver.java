@@ -21,7 +21,7 @@ public class BucketListDriver {
     }
 
     public Destination findDestinationByName(String name) {
-        for (Destination d: bucketList) {
+        for (Destination d: possibleDestinations) {
             if (d.getName().equals(name)) {
                 return d;
             }
@@ -53,5 +53,9 @@ public class BucketListDriver {
                 bucketList.remove(i);
             }
         }
+    }
+
+    public String debug() {
+        return bucketList.get(0).getName();
     }
 }

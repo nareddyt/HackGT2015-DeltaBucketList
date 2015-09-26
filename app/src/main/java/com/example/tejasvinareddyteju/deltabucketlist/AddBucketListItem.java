@@ -18,12 +18,15 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class AddBucketListItem extends Activity {
+public class AddBucketListItem extends MainActivity {
     private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+
         setContentView(R.layout.activity_add_bucket_list_item);
 
         // Get ListView object from xml
@@ -31,7 +34,7 @@ public class AddBucketListItem extends Activity {
 
         // Defined Array values to show in ListViews
         // Import all the values over here
-        String[] possibleLocations = new String[] { "New York City", "Atlanta", "Los Angeles", "Dallas", "Las Vegas"};
+        String[] possibleLocations = bucketListDriver.possibleDestinationsToArray();
 
         // Define a new Adapter
         // First parameter - Context
@@ -60,7 +63,8 @@ public class AddBucketListItem extends Activity {
                 String  itemValue    = (String) listView.getItemAtPosition(position);
 
                 // Show Alert
-                //TODO
+                bucketListDriver.addDestination(bucketListDriver.findDestinationByName(itemValue));
+                System.out.println(bucketListDriver.debug());
                 Toast.makeText(getApplicationContext(),
                         "Added destination: " + itemValue, Toast.LENGTH_SHORT)
                         .show();
