@@ -49,13 +49,10 @@ public class BucketListDriver {
 
     public void removeDestination(String name) {
         for(int i = 0; i < bucketList.size(); i++) {
-            if( bucketList.get(i).equals(name)) {
+            if (bucketList.get(i).getName().equals(name)) {
                 bucketList.remove(i);
+                break;
             }
         }
-    }
-
-    public String debug() {
-        return bucketList.get(0).getName();
     }
 }

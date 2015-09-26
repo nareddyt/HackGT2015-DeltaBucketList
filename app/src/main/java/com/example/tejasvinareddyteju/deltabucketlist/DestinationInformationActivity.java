@@ -5,12 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class DestinationInformationActivity extends Activity {
 
-
+    private BucketListDriver bucketListDriver = MainActivity.bucketListDriver;
     private String message;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +20,11 @@ public class DestinationInformationActivity extends Activity {
         message = intent.getStringExtra("DESTINATION_TO_VIEW");
 
         // Create the text view
-        TextView textView = (TextView) findViewById(R.id.destinationName);
-        textView.setText(message);
+        TextView textViewHead = (TextView) findViewById(R.id.destinationName);
+        textViewHead.setText(message);
 
-        //TODO Set destinationCode based on bucketlistdriver
+        TextView textViewCode = (TextView) findViewById(R.id.destinationCode);
+        textViewCode.setText(bucketListDriver.findDestinationByName(message).getAirportCode());
     }
 
     @Override
@@ -43,8 +43,8 @@ public class DestinationInformationActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_delete_bucketlist_item) {
-            System.out.println("Bucket List Item Deleted");
-            //TODO Delete "message" from bucketlist
+            System.out.println(message + " deleted");
+            bucketListDriver.removeDestination(message);
             return true;
         }
 

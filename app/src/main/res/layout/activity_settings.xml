@@ -1,79 +1,99 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/whatisthis"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.tejasvinareddyteju.deltabucketlist.Settings"
-    android:id="@+id/whatisthis">
+    tools:context="com.example.tejasvinareddyteju.deltabucketlist.Settings">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Notifications"
         android:id="@+id/notificationsettingslabel"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="How Often?"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Notifications"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
         android:id="@+id/notificationlabel1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/seekBar"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/notificationsettingslabel"
-        android:layout_alignEnd="@+id/seekBar" />
+        android:text="How Often?"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
+        android:id="@+id/notificationlabel2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="How do you want to be notified?"
-        android:id="@+id/notificationlabel2"
-        android:layout_centerVertical="true"
+        android:layout_alignEnd="@+id/seekBar"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/seekBar" />
+        android:layout_centerVertical="true"
+        android:text="How do you want to be notified?"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_below="@+id/notificationlabel2"
+        android:layout_alignEnd="@+id/notificationlabel2"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/notificationlabel2"
         android:layout_marginTop="41dp"
-        android:layout_alignEnd="@+id/notificationlabel2" />
+        android:ems="10"
+        android:inputType="textEmailAddress" />
 
     <Switch
+        android:id="@+id/popupsettinglabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Phone Pop-Up"
-        android:id="@+id/popupsettinglabel"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/editText"
-        android:layout_alignParentLeft="true"
-        android:checked="false" />
+        android:checked="false"
+        android:text="Phone Pop-Up" />
 
     <Switch
+        android:id="@+id/emailsettinglabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"
-        android:id="@+id/emailsettinglabel"
-        android:layout_below="@+id/notificationlabel2"
+        android:layout_alignEnd="@+id/popupsettinglabel"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/notificationlabel2"
         android:checked="false"
-        android:layout_alignEnd="@+id/popupsettinglabel" />
+        android:text="Email" />
 
     <SeekBar
+        android:id="@+id/seekBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
-        android:layout_below="@+id/notificationlabel1"
+        android:layout_alignEnd="@+id/notificationsettingslabel"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/notificationsettingslabel" />
+        android:layout_below="@+id/notificationlabel1" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/seekBar"
+        android:text="Once a week"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/seekBar"
+        android:layout_below="@+id/seekBar"
+        android:text="Once every 3 months"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

@@ -20,7 +20,7 @@ public class Destination {
             code = "JFK";
         } else if (name.equals("Atlanta")) {
             code = "ATL";
-        } else if (name.equals("Las Angeles")) {
+        } else if (name.equals("Los Angeles")) {
             code = "LAX";
         } else if (name.equals("Dallas")) {
             code = "DFW";

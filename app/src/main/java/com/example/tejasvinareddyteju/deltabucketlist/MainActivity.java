@@ -10,15 +10,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-    private ListView listView;
-
     //TODO
-    public BucketListDriver bucketListDriver = new BucketListDriver();
+    public static BucketListDriver bucketListDriver = new BucketListDriver();
     public String[] userBucketListItems = bucketListDriver.bucketListToArray();
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +52,7 @@ public class MainActivity extends Activity {
                 String itemValue = (String) listView.getItemAtPosition(position);
 
                 // Show Alert
-                Toast.makeText(getApplicationContext(), "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(view.getContext(), DestinationInformationActivity.class);
                 intent.putExtra("DESTINATION_TO_VIEW", itemValue);
