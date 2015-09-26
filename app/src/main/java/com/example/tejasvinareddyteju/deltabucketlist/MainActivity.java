@@ -15,24 +15,10 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
     private ListView listView;
-    // Defined Array values to show in ListViews
-    // Import all the values over here
-    public String[] userBucketListItems = new String[] { "Android List View",
-            "Adapter implementation",
-            "Simple List View In Android",
-            "Create List View Android",
-            "Android Example",
-            "List View Source Code",
-            "List View Array Adapter",
-            "Android Example List View",
-            "Test 1",
-            "Test 2",
-            "Test 3",
-            "Test 4",
-            "Test 5"
-    };
 
+    //TODO
     public BucketListDriver bucketListDriver = new BucketListDriver();
+    public String[] getUserBucketListItems = bucketListDriver.bucketListToArray();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

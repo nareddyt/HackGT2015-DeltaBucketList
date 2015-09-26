@@ -60,6 +60,7 @@ public class AddBucketListItem extends Activity {
                 String  itemValue    = (String) listView.getItemAtPosition(position);
 
                 // Show Alert
+                //TODO
                 Toast.makeText(getApplicationContext(),
                         "Added destination: " + itemValue, Toast.LENGTH_SHORT)
                         .show();

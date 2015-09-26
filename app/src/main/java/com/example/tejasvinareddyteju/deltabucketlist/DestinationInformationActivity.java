@@ -44,7 +44,7 @@ public class DestinationInformationActivity extends Activity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_delete_bucketlist_item) {
             System.out.println("Bucket List Item Deleted");
-            //Delete "message" from bucketlist
+            //TODO Delete "message" from bucketlist
             return true;
         }
 
