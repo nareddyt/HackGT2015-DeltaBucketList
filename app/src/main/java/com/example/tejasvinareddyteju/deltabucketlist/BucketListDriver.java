@@ -3,7 +3,9 @@ package com.example.tejasvinareddyteju.deltabucketlist;
 /**
  * Created by Rishi on 9/26/2015.
  */
+
 import java.util.ArrayList;
+
 public class BucketListDriver {
     private ArrayList<Destination> bucketList = new ArrayList<Destination>();
     private ArrayList<Destination> possibleDestinations = new ArrayList<Destination>();
@@ -14,10 +16,18 @@ public class BucketListDriver {
         possibleDestinations.add(new Destination("Los Angeles"));
         possibleDestinations.add(new Destination("Dallas"));
         possibleDestinations.add(new Destination("Las Vegas"));
+        possibleDestinations.add(new Destination("Boston"));
+        possibleDestinations.add(new Destination("Detroit"));
+        possibleDestinations.add(new Destination("Chicago"));
+        possibleDestinations.add(new Destination("Denver"));
+        possibleDestinations.add(new Destination("San Fransisco"));
     }
 
     public void addDestination(Destination place){
-        bucketList.add(place);
+        if (!alreadyExists(place.getName())) {
+            bucketList.add(place);
+        }
+
     }
 
     public Destination findDestinationByName(String name) {
@@ -28,6 +38,16 @@ public class BucketListDriver {
         }
 
         return null;
+    }
+
+    public boolean alreadyExists(String name) {
+        for (Destination d : bucketList) {
+            if (d.getName().equals(name)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public String[] bucketListToArray() {

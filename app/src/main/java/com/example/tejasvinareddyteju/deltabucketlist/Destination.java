@@ -26,6 +26,16 @@ public class Destination {
             code = "DFW";
         } else if (name.equals("Las Vegas")) {
             code = "LAS";
+        } else if (name.equals("Boston")) {
+            code = "BOS";
+        } else if (name.equals("Detroit")) {
+            code = "DTT";
+        } else if (name.equals("Chicago")) {
+            code = "ORD";
+        } else if (name.equals("Denver")) {
+            code = "DEN";
+        } else if (name.equals("San Francisco")) {
+            code = "SFO";
         }
         return code;
     }
