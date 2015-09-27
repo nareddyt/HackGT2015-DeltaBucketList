@@ -55,10 +55,17 @@ public class AddBucketListItem extends Activity {
                 String  itemValue    = (String) listView.getItemAtPosition(position);
 
                 // Show Alert
-                bucketListDriver.addDestination(bucketListDriver.findDestinationByName(itemValue));
-                Toast.makeText(getApplicationContext(),
-                        "Added destination: " + itemValue, Toast.LENGTH_SHORT)
-                        .show();
+                boolean added = bucketListDriver.addDestination(bucketListDriver.findDestinationByName(itemValue));
+
+                if (added) {
+                    Toast.makeText(getApplicationContext(),
+                            "Added destination: " + itemValue, Toast.LENGTH_SHORT)
+                            .show();
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Already on list!", Toast.LENGTH_SHORT)
+                            .show();
+                }
 
             }
 

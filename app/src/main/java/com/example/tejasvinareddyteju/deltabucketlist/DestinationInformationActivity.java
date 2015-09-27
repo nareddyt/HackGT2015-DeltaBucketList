@@ -25,6 +25,12 @@ public class DestinationInformationActivity extends Activity {
 
         TextView textViewCode = (TextView) findViewById(R.id.destinationCode);
         textViewCode.setText(bucketListDriver.findDestinationByName(message).getAirportCode());
+
+        TextView textViewCost = (TextView) findViewById(R.id.destinationCost);
+        textViewCost.setText("$" + bucketListDriver.findDestinationByName(message).getCost());
+
+        TextView textViewDate = (TextView) findViewById(R.id.destinationDate);
+        textViewDate.setText(bucketListDriver.findDestinationByName(message).getDateTime());
     }
 
     @Override
