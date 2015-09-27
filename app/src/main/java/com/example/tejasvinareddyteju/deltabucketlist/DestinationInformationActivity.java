@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DestinationInformationActivity extends Activity {
@@ -31,6 +32,9 @@ public class DestinationInformationActivity extends Activity {
 
         TextView textViewDate = (TextView) findViewById(R.id.destinationDate);
         textViewDate.setText(bucketListDriver.findDestinationByName(message).getDateTime());
+
+        ImageView imageView = (ImageView) findViewById(R.id.destinationImage);
+        imageView.setImageResource(bucketListDriver.findDestinationByName(message).getImageId());
     }
 
     @Override

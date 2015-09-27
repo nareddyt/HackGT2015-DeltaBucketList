@@ -9,6 +9,7 @@ public class Destination implements Comparable<Destination> {
     private String name;
     private int cost;
     private String dateTime;
+    private int imageId;
     private Random rand = new Random();
 
     public Destination(String name) {
@@ -52,24 +53,34 @@ public class Destination implements Comparable<Destination> {
         String code = "NULL";
         if (name.equals("New York City")) {
             code = "JFK";
+            imageId = R.mipmap.newyorkcity;
         } else if (name.equals("Atlanta")) {
             code = "ATL";
+            imageId = R.mipmap.atlanta;
         } else if (name.equals("Los Angeles")) {
             code = "LAX";
+            imageId = R.mipmap.losangeles;
         } else if (name.equals("Dallas")) {
             code = "DFW";
+            imageId = R.mipmap.dallas;
         } else if (name.equals("Las Vegas")) {
             code = "LAS";
+            imageId = R.mipmap.lasvagas;
         } else if (name.equals("Boston")) {
             code = "BOS";
+            imageId = R.mipmap.boston;
         } else if (name.equals("Detroit")) {
             code = "DTT";
+            imageId = R.mipmap.detroit;
         } else if (name.equals("Chicago")) {
             code = "ORD";
+            imageId = R.mipmap.chicago;
         } else if (name.equals("Denver")) {
             code = "DEN";
+            imageId = R.mipmap.denver;
         } else if (name.equals("San Francisco")) {
             code = "SFO";
+            imageId = R.mipmap.sanfransisco;
         }
         return code;
     }
@@ -77,5 +88,9 @@ public class Destination implements Comparable<Destination> {
     @Override
     public int compareTo(Destination another) {
         return this.getName().compareTo(another.getName());
+    }
+
+    public int getImageId() {
+        return imageId;
     }
 }
