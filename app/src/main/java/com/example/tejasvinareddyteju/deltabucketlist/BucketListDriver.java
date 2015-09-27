@@ -5,6 +5,7 @@ package com.example.tejasvinareddyteju.deltabucketlist;
  */
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class BucketListDriver {
     private ArrayList<Destination> bucketList = new ArrayList<Destination>();
@@ -21,13 +22,15 @@ public class BucketListDriver {
         possibleDestinations.add(new Destination("Chicago"));
         possibleDestinations.add(new Destination("Denver"));
         possibleDestinations.add(new Destination("San Fransisco"));
+        Collections.sort(possibleDestinations);
     }
 
-    public void addDestination(Destination place){
+    public boolean addDestination(Destination place) {
         if (!alreadyExists(place.getName())) {
             bucketList.add(place);
+            return true;
         }
-
+        return false;
     }
 
     public Destination findDestinationByName(String name) {

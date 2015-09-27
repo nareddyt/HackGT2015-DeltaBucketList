@@ -33,9 +33,9 @@
         android:id="@+id/notificationlabel2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/seekBar"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/textView"
         android:text="How do you want to be notified?"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -95,5 +95,14 @@
         android:layout_below="@+id/seekBar"
         android:text="Once every 3 months"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <CheckBox
+        android:id="@+id/employeeCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/popupsettinglabel"
+        android:text="Are you an employee?" />
 
 </RelativeLayout>
