@@ -56,7 +56,6 @@ public class DestinationInformationActivity extends Activity {
             System.out.println(message + " deleted");
             bucketListDriver.removeDestination(message);
 
-            //FIXME finish does not work -- main activity does not update
             finish();
             return true;
         }
