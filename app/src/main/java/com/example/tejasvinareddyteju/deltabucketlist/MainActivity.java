@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements FloatingActionButton.OnCheckedChangeListener {
     public static BucketListDriver bucketListDriver = new BucketListDriver();
     public String[] userBucketListItems;
     private ListView listView;
@@ -20,12 +20,14 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnCheckedChangeListener(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
         System.out.println("Resumed!");
 
         userBucketListItems = bucketListDriver.bucketListToArray();
@@ -100,5 +102,10 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCheckedChanged(FloatingActionButton fabView, boolean isChecked) {
+
     }
 }
