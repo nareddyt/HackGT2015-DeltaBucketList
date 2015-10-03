@@ -55,6 +55,8 @@ public class DestinationInformationActivity extends Activity {
         if (id == R.id.action_delete_bucketlist_item) {
             System.out.println(message + " deleted");
             bucketListDriver.removeDestination(message);
+
+            finish();
             return true;
         }
 
