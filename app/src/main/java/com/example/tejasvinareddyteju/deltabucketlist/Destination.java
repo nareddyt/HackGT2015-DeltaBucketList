@@ -51,6 +51,7 @@ public class Destination implements Comparable<Destination> {
 
     public String getAirportCode() {
         String code = "NULL";
+        //FIXME NYC image too big
         if (name.equals("New York City")) {
             code = "JFK";
             imageId = R.mipmap.newyorkcity;

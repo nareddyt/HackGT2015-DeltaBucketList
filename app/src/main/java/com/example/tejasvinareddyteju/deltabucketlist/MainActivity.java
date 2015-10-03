@@ -12,8 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
-
-    //TODO
     public static BucketListDriver bucketListDriver = new BucketListDriver();
     public String[] userBucketListItems = bucketListDriver.bucketListToArray();
     private ListView listView;
