@@ -13,13 +13,23 @@ import android.widget.ListView;
 
 public class MainActivity extends Activity {
     public static BucketListDriver bucketListDriver = new BucketListDriver();
-    public String[] userBucketListItems = bucketListDriver.bucketListToArray();
+    public String[] userBucketListItems;
     private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        System.out.println("Resumed!");
+
+        userBucketListItems = bucketListDriver.bucketListToArray();
+
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.bucketlistListView);
 
@@ -42,7 +52,6 @@ public class MainActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-
                 // ListView Clicked item index
                 int itemPosition = position;
 
@@ -58,6 +67,8 @@ public class MainActivity extends Activity {
             }
 
         });
+
+        adapter.notifyDataSetChanged();
     }
 
     @Override
