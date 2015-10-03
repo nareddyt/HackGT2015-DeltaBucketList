@@ -2,19 +2,16 @@ package com.example.tejasvinareddyteju.deltabucketlist;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Outline;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewOutlineProvider;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements FloatingActionButton.OnCheckedChangeListener {
     public static BucketListDriver bucketListDriver = new BucketListDriver();
     public String[] userBucketListItems;
     private ListView listView;
@@ -23,23 +20,15 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnCheckedChangeListener(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
         System.out.println("Resumed!");
-
-        Button fab = (Button) findViewById(R.id.fabbutton);
-        ViewOutlineProvider viewOutlineProvider = new ViewOutlineProvider() {
-            @Override
-            public void getOutline(View view, Outline outline) {
-                // Or read size directly from the view's width/height
-                int size = getResources().getDimensionPixelSize(R.dimen.fab_size_mini);
-                outline.setOval(0, 0, size, size);
-            }
-        };
-        fab.setOutlineProvider(viewOutlineProvider);
 
         userBucketListItems = bucketListDriver.bucketListToArray();
 
@@ -113,5 +102,10 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCheckedChanged(FloatingActionButton fabView, boolean isChecked) {
+
     }
 }

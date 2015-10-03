@@ -17,17 +17,22 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
 
-    <Button
-        android:id="@+id/fabbutton"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="right|bottom"
-        android:background="@drawable/ripple"
-        android:elevation="3dp"
-        android:fontFamily="sans-serif-light"
-        android:paddingBottom="16dp"
-        android:text="+"
-        android:textSize="40sp" />
+    <com.example.tejasvinareddyteju.deltabucketlist.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="@dimen/fab_size"
+        android:layout_height="@dimen/fab_size"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/fab_background"
+        android:elevation="@dimen/fab_elevation">
+
+        <ImageView
+            android:layout_width="@dimen/fab_icon_size"
+            android:layout_height="@dimen/fab_icon_size"
+            android:layout_gravity="center"
+            android:duplicateParentState="true"
+            android:src="@drawable/fab_icons" />
+    </com.example.tejasvinareddyteju.deltabucketlist.FloatingActionButton>
 </RelativeLayout>

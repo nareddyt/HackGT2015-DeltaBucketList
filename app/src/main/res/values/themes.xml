@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="CustomActionBarTheme" parent="@android:style/Theme.Material.Light">
+
+    <style name="CustomTheme" parent="@android:style/Theme.Material.Light">
         <!-- Main theme colors -->
         <!--   your app branding color for the app bar -->
         <item name="android:colorPrimary">#F44336</item>
