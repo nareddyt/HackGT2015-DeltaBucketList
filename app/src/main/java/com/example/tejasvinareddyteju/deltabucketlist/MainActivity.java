@@ -2,13 +2,16 @@ package com.example.tejasvinareddyteju.deltabucketlist;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Outline;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewOutlineProvider;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
@@ -25,8 +28,18 @@ public class MainActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-
         System.out.println("Resumed!");
+
+        Button fab = (Button) findViewById(R.id.fabbutton);
+        ViewOutlineProvider viewOutlineProvider = new ViewOutlineProvider() {
+            @Override
+            public void getOutline(View view, Outline outline) {
+                // Or read size directly from the view's width/height
+                int size = getResources().getDimensionPixelSize(R.dimen.fab_size_mini);
+                outline.setOval(0, 0, size, size);
+            }
+        };
+        fab.setOutlineProvider(viewOutlineProvider);
 
         userBucketListItems = bucketListDriver.bucketListToArray();
 
