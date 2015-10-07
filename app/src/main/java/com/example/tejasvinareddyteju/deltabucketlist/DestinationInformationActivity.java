@@ -23,18 +23,19 @@ public class DestinationInformationActivity extends Activity {
         // Create the text view
         TextView textViewHead = (TextView) findViewById(R.id.destinationName);
         textViewHead.setText(message);
+        Destination dest = bucketListDriver.findDestinationByName(message);
 
         TextView textViewCode = (TextView) findViewById(R.id.destinationCode);
-        textViewCode.setText(bucketListDriver.findDestinationByName(message).getAirportCode());
+        textViewCode.setText(dest.getAirportCode());
 
         TextView textViewCost = (TextView) findViewById(R.id.destinationCost);
-        textViewCost.setText("$" + bucketListDriver.findDestinationByName(message).getCost());
+        textViewCost.setText("$" + dest.getCost());
 
         TextView textViewDate = (TextView) findViewById(R.id.destinationDate);
-        textViewDate.setText(bucketListDriver.findDestinationByName(message).getDateTime());
+        textViewDate.setText(dest.getDateTime());
 
         ImageView imageView = (ImageView) findViewById(R.id.destinationImage);
-        imageView.setImageResource(bucketListDriver.findDestinationByName(message).getImageId());
+        imageView.setImageResource(dest.getImageId());
     }
 
     @Override
