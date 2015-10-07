@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class MainActivity extends Activity implements FloatingActionButton.OnCheckedChangeListener {
+public class MainActivity extends Activity {
     public static BucketListDriver bucketListDriver = new BucketListDriver();
     public String[] userBucketListItems;
     private ListView listView;
@@ -20,15 +20,11 @@ public class MainActivity extends Activity implements FloatingActionButton.OnChe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnCheckedChangeListener(this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        System.out.println("Resumed!");
 
         userBucketListItems = bucketListDriver.bucketListToArray();
 
@@ -59,9 +55,6 @@ public class MainActivity extends Activity implements FloatingActionButton.OnChe
 
                 // ListView Clicked item value
                 String itemValue = (String) listView.getItemAtPosition(position);
-
-                // Show Alert
-                //Toast.makeText(getApplicationContext(), "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(view.getContext(), DestinationInformationActivity.class);
                 intent.putExtra("DESTINATION_TO_VIEW", itemValue);
@@ -94,18 +87,14 @@ public class MainActivity extends Activity implements FloatingActionButton.OnChe
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
             return true;
-        } else if (id == R.id.action_add_bucket_item) {
-            System.out.println("Add BucketList Item clicked");
-            Intent intent = new Intent(this, AddBucketListItem.class);
-            startActivity(intent);
-            return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onCheckedChanged(FloatingActionButton fabView, boolean isChecked) {
-
+    //Called when the user pressed the FAB
+    public void addNewItem(View view) {
+        System.out.println("AddBucketListItem clicked");
+        Intent intent = new Intent(this, AddBucketListItem.class);
+        startActivity(intent);
     }
 }

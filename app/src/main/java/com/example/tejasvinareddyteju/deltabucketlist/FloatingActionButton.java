@@ -109,9 +109,10 @@ public class FloatingActionButton extends FrameLayout implements Checkable {
         }
     }
 
+    //Commented out to prevent it from changing
     @Override
     public void toggle() {
-        setChecked(!mChecked);
+        //setChecked(!mChecked);
     }
 
     /**
