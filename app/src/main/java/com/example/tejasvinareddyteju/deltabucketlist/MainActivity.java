@@ -83,7 +83,6 @@ public class MainActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            System.out.println("Settings clicked");
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
             return true;
@@ -93,8 +92,7 @@ public class MainActivity extends Activity {
 
     //Called when the user pressed the FAB
     public void addNewItem(View view) {
-        System.out.println("AddBucketListItem clicked");
-        Intent intent = new Intent(this, AddBucketListItem.class);
+        Intent intent = new Intent(this, AddDestinationActivity.class);
         startActivity(intent);
     }
 }
