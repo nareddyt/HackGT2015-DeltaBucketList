@@ -1,20 +1,24 @@
 package com.example.tejasvinareddyteju.deltabucketlist;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by Tejasvi on 10/7/2015.
  */
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     private String[] mDataset;
+    private Context m;
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public RecyclerAdapter(String[] myDataset) {
+    public RecyclerAdapter(String[] myDataset, Context m) {
         mDataset = myDataset;
+        this.m = m;
     }
 
     // Create new views (invoked by the layout manager)
@@ -33,6 +37,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.mTextView.setText(mDataset[position]);
+        holder.mTextView.setTag(holder);
+        holder.mTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ViewHolder holder = (ViewHolder) view.getTag();
+                int position = holder.getPosition();
+                Toast.makeText(m, "Added destination: " + position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)
