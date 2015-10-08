@@ -21,9 +21,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.textview_add_destination, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclelist_add_destination, parent, false);
         //TODO set the view's size, margins, paddings and layout parameters
-        ViewHolder vh = new ViewHolder((TextView) v);
+        ViewHolder vh = new ViewHolder(view);
         return vh;
     }
 
@@ -33,7 +33,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.mTextView.setText(mDataset[position]);
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -49,9 +48,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         // each data item is just a string in this case
         public TextView mTextView;
 
-        public ViewHolder(TextView v) {
-            super(v);
-            mTextView = v;
+        public ViewHolder(View view) {
+            super(view);
+            //FIXME
+            mTextView = (TextView) view.findViewById(R.id.recyclerDestinationName);
         }
     }
 }
