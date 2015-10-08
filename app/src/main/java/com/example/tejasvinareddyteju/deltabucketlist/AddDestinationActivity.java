@@ -14,7 +14,7 @@ public class AddDestinationActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_bucket_list_item);
+        setContentView(R.layout.activity_add_destination);
         mRecyclerView = (RecyclerView) findViewById(R.id.addLocationsRecyclerView);
 
         // use this setting to improve performance if you know that changes
