@@ -25,17 +25,25 @@ public class BucketListDriver {
         Collections.sort(possibleDestinations);
     }
 
+    public static String[] destinationToStringAwway(Destination[] dests) {
+        String[] strings = new String[dests.length];
+        for (int i = 0; i < dests.length; i++) {
+            strings[i] = dests[i].getName();
+        }
+        return strings;
+    }
+
     public boolean addDestination(Destination place) {
-        if (!alreadyExists(place.getName())) {
+        if (!alreadyExists(place)) {
             bucketList.add(place);
             return true;
         }
         return false;
     }
 
-    public Destination findDestinationByName(String name) {
-        for (Destination d: possibleDestinations) {
-            if (d.getName().equals(name)) {
+    public Destination findDestinationById(int id) {
+        for (Destination d : possibleDestinations) {
+            if (d.getId() == id) {
                 return d;
             }
         }
@@ -43,39 +51,29 @@ public class BucketListDriver {
         return null;
     }
 
-    public boolean alreadyExists(String name) {
-        for (Destination d : bucketList) {
+    public boolean alreadyExists(Destination toCheck) {
+        return bucketList.contains(toCheck);
+    }
+
+    public Destination[] bucketListToArray() {
+        return bucketList.toArray(new Destination[bucketList.size()]);
+    }
+
+    public Destination[] possibleDestinationsToArray() {
+        return possibleDestinations.toArray(new Destination[possibleDestinations.size()]);
+    }
+
+    public void removeDestination(Destination place) {
+        bucketList.remove(place);
+    }
+
+    public Destination findDestinationByName(String name) {
+        for (Destination d : possibleDestinations) {
             if (d.getName().equals(name)) {
-                return true;
+                return d;
             }
         }
 
-        return false;
-    }
-
-    public String[] bucketListToArray() {
-        ArrayList<String> destr = new ArrayList<String>();
-        for (Destination d: bucketList) {
-            destr.add(d.getName());
-        }
-
-        return destr.toArray(new String[destr.size()]);
-    }
-
-    public String[] possibleDestinationsToArray() {
-        ArrayList<String> destr = new ArrayList<String>();
-        for (Destination d: possibleDestinations) {
-            destr.add(d.getName());
-        }
-        return destr.toArray(new String[destr.size()]);
-    }
-
-    public void removeDestination(String name) {
-        for(int i = 0; i < bucketList.size(); i++) {
-            if (bucketList.get(i).getName().equals(name)) {
-                bucketList.remove(i);
-                break;
-            }
-        }
+        return null;
     }
 }

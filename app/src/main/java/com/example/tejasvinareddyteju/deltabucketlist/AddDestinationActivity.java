@@ -26,7 +26,7 @@ public class AddDestinationActivity extends Activity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new RecyclerAdapter(bucketListDriver.possibleDestinationsToArray(), this);
+        mAdapter = new RecyclerAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
     }
 }

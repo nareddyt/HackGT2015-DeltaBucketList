@@ -12,6 +12,7 @@ public class DestinationInformationActivity extends Activity {
 
     private BucketListDriver bucketListDriver = MainActivity.bucketListDriver;
     private String message;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +56,8 @@ public class DestinationInformationActivity extends Activity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_delete_bucketlist_item) {
             System.out.println(message + " deleted");
-            bucketListDriver.removeDestination(message);
+            Destination toRemove = bucketListDriver.findDestinationByName(message);
+            bucketListDriver.removeDestination(toRemove);
 
             finish();
             return true;
