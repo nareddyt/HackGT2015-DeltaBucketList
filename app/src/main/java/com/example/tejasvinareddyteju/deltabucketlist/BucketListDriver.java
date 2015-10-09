@@ -22,6 +22,7 @@ public class BucketListDriver {
         possibleDestinations.add(new Destination("Chicago"));
         possibleDestinations.add(new Destination("Denver"));
         possibleDestinations.add(new Destination("San Francisco"));
+        possibleDestinations.add(new Destination("Phillidelphia"));
         Collections.sort(possibleDestinations);
     }
 
