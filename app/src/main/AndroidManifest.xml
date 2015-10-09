@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddBucketListItem"
+            android:name=".AddDestinationActivity"
             android:label="@string/title_activity_add_bucket_list_item"
             android:parentActivityName=".MainActivity" >
             <meta-data

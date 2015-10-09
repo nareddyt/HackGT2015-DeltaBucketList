@@ -13,7 +13,6 @@ import android.widget.ListView;
 
 public class MainActivity extends Activity {
     public static BucketListDriver bucketListDriver = new BucketListDriver();
-    public String[] userBucketListItems;
     private ListView listView;
 
     @Override
@@ -26,25 +25,13 @@ public class MainActivity extends Activity {
     public void onResume() {
         super.onResume();
 
-        userBucketListItems = bucketListDriver.bucketListToArray();
-
-        // Get ListView object from xml
+        String[] userBucketListItems = BucketListDriver.destinationToStringAwway(bucketListDriver.bucketListToArray());
         listView = (ListView) findViewById(R.id.bucketlistListView);
-
-        // Define a new Adapter
-        // First parameter - Context
-        // Second parameter - Layout for the row
-        // Third parameter - ID of the TextView to which the data is written
-        // Forth - the Array of data
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, userBucketListItems);
-
-
-        // Assign adapter to ListView
         listView.setAdapter(adapter);
 
-        // ListView Item Click Listener
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -54,6 +41,7 @@ public class MainActivity extends Activity {
                 int itemPosition = position;
 
                 // ListView Clicked item value
+                //FIXME takes in a string
                 String itemValue = (String) listView.getItemAtPosition(position);
 
                 Intent intent = new Intent(view.getContext(), DestinationInformationActivity.class);
@@ -62,8 +50,6 @@ public class MainActivity extends Activity {
             }
 
         });
-
-        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -83,7 +69,6 @@ public class MainActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            System.out.println("Settings clicked");
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
             return true;
@@ -93,8 +78,7 @@ public class MainActivity extends Activity {
 
     //Called when the user pressed the FAB
     public void addNewItem(View view) {
-        System.out.println("AddBucketListItem clicked");
-        Intent intent = new Intent(this, AddBucketListItem.class);
+        Intent intent = new Intent(this, AddDestinationActivity.class);
         startActivity(intent);
     }
 }
