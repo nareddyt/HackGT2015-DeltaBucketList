@@ -1,7 +1,7 @@
 package com.example.tejasvinareddyteju.deltabucketlist;
 
 /**
- * Created by Rishi on 9/26/2015.
+ * Created by Kavin and Teju on 9/26/2015.
  */
 
 import java.util.ArrayList;
