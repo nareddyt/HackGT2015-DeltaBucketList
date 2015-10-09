@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
     public void onResume() {
         super.onResume();
 
-        String[] userBucketListItems = BucketListDriver.destinationToStringAwway(bucketListDriver.bucketListToArray());
+        String[] userBucketListItems = BucketListDriver.destinationToStringArray(bucketListDriver.bucketListToArray());
         listView = (ListView) findViewById(R.id.bucketlistListView);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,

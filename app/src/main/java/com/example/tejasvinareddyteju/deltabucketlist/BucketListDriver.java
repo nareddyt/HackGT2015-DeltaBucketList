@@ -25,7 +25,7 @@ public class BucketListDriver {
         Collections.sort(possibleDestinations);
     }
 
-    public static String[] destinationToStringAwway(Destination[] dests) {
+    public static String[] destinationToStringArray(Destination[] dests) {
         String[] strings = new String[dests.length];
         for (int i = 0; i < dests.length; i++) {
             strings[i] = dests[i].getName();
