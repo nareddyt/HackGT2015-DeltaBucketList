@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DestinationInformationActivity extends Activity {
 
     private BucketListDriver bucketListDriver = MainActivity.bucketListDriver;
     private String message;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,15 +24,19 @@ public class DestinationInformationActivity extends Activity {
         // Create the text view
         TextView textViewHead = (TextView) findViewById(R.id.destinationName);
         textViewHead.setText(message);
+        Destination dest = bucketListDriver.findDestinationByName(message);
 
         TextView textViewCode = (TextView) findViewById(R.id.destinationCode);
-        textViewCode.setText(bucketListDriver.findDestinationByName(message).getAirportCode());
+        textViewCode.setText(dest.getAirportCode());
 
         TextView textViewCost = (TextView) findViewById(R.id.destinationCost);
-        textViewCost.setText("$" + bucketListDriver.findDestinationByName(message).getCost());
+        textViewCost.setText("$" + dest.getCost());
 
         TextView textViewDate = (TextView) findViewById(R.id.destinationDate);
-        textViewDate.setText(bucketListDriver.findDestinationByName(message).getDateTime());
+        textViewDate.setText(dest.getDateTime());
+
+        ImageView imageView = (ImageView) findViewById(R.id.destinationImage);
+        imageView.setImageResource(dest.getImageId());
     }
 
     @Override
@@ -50,7 +56,10 @@ public class DestinationInformationActivity extends Activity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_delete_bucketlist_item) {
             System.out.println(message + " deleted");
-            bucketListDriver.removeDestination(message);
+            Destination toRemove = bucketListDriver.findDestinationByName(message);
+            bucketListDriver.removeDestination(toRemove);
+
+            finish();
             return true;
         }
 

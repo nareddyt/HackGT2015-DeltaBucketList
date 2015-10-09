@@ -6,9 +6,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/bucketlistlogo"
         android:label="@string/app_name"
-        android:theme="@style/CustomActionBarTheme" >
+        android:theme="@style/CustomTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddBucketListItem"
+            android:name=".AddDestinationActivity"
             android:label="@string/title_activity_add_bucket_list_item"
             android:parentActivityName=".MainActivity" >
             <meta-data

@@ -8,13 +8,14 @@
     tools:context="com.example.tejasvinareddyteju.deltabucketlist.DestinationInformationActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/destinationImage"
         android:layout_width="100dp"
         android:layout_height="300dp"
         android:layout_above="@+id/button"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:background="#5c8dff"
+        android:background="@android:color/transparent"
+        android:elevation="2dp"
         android:src="@android:drawable/ic_dialog_alert" />
 
     <TextView
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -76,7 +78,7 @@
         android:id="@+id/destinationDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/imageView"
+        android:layout_alignEnd="@+id/destinationImage"
         android:layout_below="@+id/destinationCode"
         android:text="Actual date"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -85,7 +87,7 @@
         android:id="@+id/seekBar2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageView"
+        android:layout_above="@+id/destinationImage"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/textView4" />

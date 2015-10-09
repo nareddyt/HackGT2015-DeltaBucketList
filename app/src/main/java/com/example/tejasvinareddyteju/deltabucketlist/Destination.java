@@ -2,17 +2,58 @@ package com.example.tejasvinareddyteju.deltabucketlist;
 
 import java.util.Random;
 
+//FIXME use id as main identifier
+//FIXME add state locations
+
 /**
  * Created by Rishi on 9/26/2015.
  */
 public class Destination implements Comparable<Destination> {
+    public static int numberOfDestinations = 0;
+    private int id;
     private String name;
+    private String airportCode;
+    private int imageId;
     private int cost;
     private String dateTime;
     private Random rand = new Random();
-
     public Destination(String name) {
         this.name = name;
+        this.id = Destination.numberOfDestinations;
+        Destination.numberOfDestinations++;
+
+        if (name.equals("New York City")) {
+            airportCode = "JFK";
+            imageId = R.mipmap.newyorkcity;
+        } else if (name.equals("Atlanta")) {
+            airportCode = "ATL";
+            imageId = R.mipmap.atlanta;
+        } else if (name.equals("Los Angeles")) {
+            airportCode = "LAX";
+            imageId = R.mipmap.losangeles;
+        } else if (name.equals("Dallas")) {
+            airportCode = "DFW";
+            imageId = R.mipmap.dallas;
+        } else if (name.equals("Las Vegas")) {
+            airportCode = "LAS";
+            imageId = R.mipmap.lasvagas;
+        } else if (name.equals("Boston")) {
+            airportCode = "BOS";
+            imageId = R.mipmap.boston;
+        } else if (name.equals("Detroit")) {
+            airportCode = "DTT";
+            imageId = R.mipmap.detroit;
+        } else if (name.equals("Chicago")) {
+            airportCode = "ORD";
+            imageId = R.mipmap.chicago;
+        } else if (name.equals("Denver")) {
+            airportCode = "DEN";
+            imageId = R.mipmap.denver;
+        } else if (name.equals("San Francisco")) {
+            airportCode = "SFO";
+            imageId = R.mipmap.sanfransisco;
+        }
+
         int choice = rand.nextInt(8);
 
         if (choice == 7) {
@@ -36,6 +77,10 @@ public class Destination implements Comparable<Destination> {
         cost = 150 + rand.nextInt(100);
     }
 
+    public int getId() {
+        return id;
+    }
+
     public int getCost() {
         return cost;
     }
@@ -44,38 +89,35 @@ public class Destination implements Comparable<Destination> {
         return dateTime;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
     public String getAirportCode() {
-        String code = "NULL";
-        if (name.equals("New York City")) {
-            code = "JFK";
-        } else if (name.equals("Atlanta")) {
-            code = "ATL";
-        } else if (name.equals("Los Angeles")) {
-            code = "LAX";
-        } else if (name.equals("Dallas")) {
-            code = "DFW";
-        } else if (name.equals("Las Vegas")) {
-            code = "LAS";
-        } else if (name.equals("Boston")) {
-            code = "BOS";
-        } else if (name.equals("Detroit")) {
-            code = "DTT";
-        } else if (name.equals("Chicago")) {
-            code = "ORD";
-        } else if (name.equals("Denver")) {
-            code = "DEN";
-        } else if (name.equals("San Francisco")) {
-            code = "SFO";
-        }
-        return code;
+        return airportCode;
     }
 
     @Override
     public int compareTo(Destination another) {
         return this.getName().compareTo(another.getName());
+    }
+
+    public int getImageId() {
+        return imageId;
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        } else if (!(obj instanceof Destination)) {
+            return false;
+        }
+
+        Destination d = (Destination) obj;
+        return d.getName().equals(this.getName());
+    }
+
+    public int hashCode() {
+        return getName().hashCode();
     }
 }

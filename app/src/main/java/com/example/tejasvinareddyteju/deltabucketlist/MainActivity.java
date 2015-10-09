@@ -12,47 +12,37 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
-
-    //TODO
     public static BucketListDriver bucketListDriver = new BucketListDriver();
-    public String[] userBucketListItems = bucketListDriver.bucketListToArray();
     private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Get ListView object from xml
-        listView = (ListView) findViewById(R.id.bucketlistListView);
+    }
 
-        // Define a new Adapter
-        // First parameter - Context
-        // Second parameter - Layout for the row
-        // Third parameter - ID of the TextView to which the data is written
-        // Forth - the Array of data
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        String[] userBucketListItems = BucketListDriver.destinationToStringAwway(bucketListDriver.bucketListToArray());
+        listView = (ListView) findViewById(R.id.bucketlistListView);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, userBucketListItems);
-
-
-        // Assign adapter to ListView
         listView.setAdapter(adapter);
 
-        // ListView Item Click Listener
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-
                 // ListView Clicked item index
                 int itemPosition = position;
 
                 // ListView Clicked item value
+                //FIXME takes in a string
                 String itemValue = (String) listView.getItemAtPosition(position);
-
-                // Show Alert
-                //Toast.makeText(getApplicationContext(), "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(view.getContext(), DestinationInformationActivity.class);
                 intent.putExtra("DESTINATION_TO_VIEW", itemValue);
@@ -79,17 +69,16 @@ public class MainActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            System.out.println("Settings clicked");
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
             return true;
-        } else if (id == R.id.action_add_bucket_item) {
-            System.out.println("Add BucketList Item clicked");
-            Intent intent = new Intent(this, AddBucketListItem.class);
-            startActivity(intent);
-            return true;
         }
-
         return super.onOptionsItemSelected(item);
+    }
+
+    //Called when the user pressed the FAB
+    public void addNewItem(View view) {
+        Intent intent = new Intent(this, AddDestinationActivity.class);
+        startActivity(intent);
     }
 }
