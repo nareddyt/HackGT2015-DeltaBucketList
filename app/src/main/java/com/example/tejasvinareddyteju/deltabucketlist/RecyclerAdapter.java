@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -31,24 +32,29 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        Destination toAdd = bucketListDriver.possibleDestinationsToArray()[position];
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+        final Destination toAdd = bucketListDriver.possibleDestinationsToArray()[position];
 
         holder.recyclerLocationName.setText(toAdd.getName());
         holder.recyclerLocationCode.setText("Airport Code: " + toAdd.getAirportCode());
         holder.recyclerLocationImage.setImageResource(toAdd.getImageId());
 
-        /*
-        holder.recyclerLocationName.setTag(holder);
-        holder.recyclerLocationName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ViewHolder holder = (ViewHolder) view.getTag();
-                int position = holder.getPosition();
-                Toast.makeText(m, "Added destination: " + position, Toast.LENGTH_SHORT).show();
+        if (bucketListDriver.hasDestination(toAdd)) {
+            holder.recyclerLocationSwitch.setChecked(true);
+        } else {
+            holder.recyclerLocationSwitch.setChecked(false);
+        }
+        holder.recyclerLocationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    bucketListDriver.addDestination(toAdd);
+                    System.out.println(toAdd.getName() + " added!");
+                } else {
+                    bucketListDriver.removeDestination(toAdd);
+                    System.out.println(toAdd.getName() + " removed!");
+                }
             }
         });
-        */
     }
 
     // Return the size of your dataset (invoked by the layout manager)

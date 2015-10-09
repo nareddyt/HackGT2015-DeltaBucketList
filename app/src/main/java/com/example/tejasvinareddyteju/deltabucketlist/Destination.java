@@ -2,6 +2,9 @@ package com.example.tejasvinareddyteju.deltabucketlist;
 
 import java.util.Random;
 
+//FIXME use id as main identifier
+//FIXME add state locations
+
 /**
  * Created by Rishi on 9/26/2015.
  */
@@ -101,5 +104,20 @@ public class Destination implements Comparable<Destination> {
 
     public int getImageId() {
         return imageId;
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        } else if (!(obj instanceof Destination)) {
+            return false;
+        }
+
+        Destination d = (Destination) obj;
+        return d.getName().equals(this.getName());
+    }
+
+    public int hashCode() {
+        return getName().hashCode();
     }
 }

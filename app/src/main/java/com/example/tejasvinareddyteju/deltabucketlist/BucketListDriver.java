@@ -33,6 +33,16 @@ public class BucketListDriver {
         return strings;
     }
 
+    public boolean hasDestination(Destination destination) {
+        for (Destination d : bucketList) {
+            if (destination.equals(d)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public boolean addDestination(Destination place) {
         if (!alreadyExists(place)) {
             bucketList.add(place);
