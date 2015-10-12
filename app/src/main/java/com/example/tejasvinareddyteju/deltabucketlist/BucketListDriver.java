@@ -22,11 +22,10 @@ public class BucketListDriver {
         possibleDestinations.add(new Destination("Chicago"));
         possibleDestinations.add(new Destination("Denver"));
         possibleDestinations.add(new Destination("San Francisco"));
-        possibleDestinations.add(new Destination("Phillidelphia"));
         Collections.sort(possibleDestinations);
     }
 
-    public static String[] destinationToStringAwway(Destination[] dests) {
+    public static String[] destinationToStringArray(Destination[] dests) {
         String[] strings = new String[dests.length];
         for (int i = 0; i < dests.length; i++) {
             strings[i] = dests[i].getName();

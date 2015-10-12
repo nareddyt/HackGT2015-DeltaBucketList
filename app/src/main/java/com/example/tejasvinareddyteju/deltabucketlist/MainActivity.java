@@ -1,55 +1,43 @@
 package com.example.tejasvinareddyteju.deltabucketlist;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
     public static BucketListDriver bucketListDriver = new BucketListDriver();
-    private ListView listView;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
+        mRecyclerView = (RecyclerView) findViewById(R.id.bucketlistRecyclerView);
 
-    @Override
-    public void onResume() {
-        super.onResume();
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
 
-        String[] userBucketListItems = BucketListDriver.destinationToStringAwway(bucketListDriver.bucketListToArray());
-        listView = (ListView) findViewById(R.id.bucketlistListView);
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, userBucketListItems);
-        listView.setAdapter(adapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                // ListView Clicked item index
-                int itemPosition = position;
-
-                // ListView Clicked item value
-                //FIXME takes in a string
-                String itemValue = (String) listView.getItemAtPosition(position);
-
-                Intent intent = new Intent(view.getContext(), DestinationInformationActivity.class);
-                intent.putExtra("DESTINATION_TO_VIEW", itemValue);
-                startActivity(intent);
-            }
-
-        });
+        // specify an adapter (see also next example)
+        mAdapter = new RecyclerAdapter(this);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
@@ -76,9 +64,56 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    //Called when the user pressed the FAB
+    //Called when the user presses the FAB
     public void addNewItem(View view) {
         Intent intent = new Intent(this, AddDestinationActivity.class);
         startActivity(intent);
+    }
+
+    public static class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+        private BucketListDriver bucketListDriver = MainActivity.bucketListDriver;
+        private Context m;
+
+        // Provide a suitable constructor (depends on the kind of dataset)
+        public RecyclerAdapter(Context m) {
+            this.m = m;
+        }
+
+        // Create new views (invoked by the layout manager)
+        @Override
+        public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_main_bucketlist, parent, false);
+            ViewHolder vh = new ViewHolder(view);
+            return vh;
+        }
+
+        // Replace the contents of a view (invoked by the layout manager)
+        @Override
+        public void onBindViewHolder(final ViewHolder holder, int position) {
+            final Destination toAdd = bucketListDriver.bucketListToArray()[position];
+
+            holder.destinationIcon.setImageResource(toAdd.getImageId());
+            holder.destinationName.setText(toAdd.getName());
+        }
+
+        // Return the size of your dataset (invoked by the layout manager)
+        @Override
+        public int getItemCount() {
+            return bucketListDriver.bucketListToArray().length;
+        }
+
+        // Provide a reference to the views for each data item
+        // Complex data items may need more than one view per item, and
+        // you provide access to all the views for a data item in a view holder
+        public static class ViewHolder extends RecyclerView.ViewHolder {
+            public ImageView destinationIcon;
+            public TextView destinationName;
+
+            public ViewHolder(View view) {
+                super(view);
+                destinationIcon = (ImageView) view.findViewById(R.id.recyclerMainIcon);
+                destinationName = (TextView) view.findViewById(R.id.recyclerMainName);
+            }
+        }
     }
 }
