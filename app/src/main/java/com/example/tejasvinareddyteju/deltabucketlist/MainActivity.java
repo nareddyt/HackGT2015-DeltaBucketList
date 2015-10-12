@@ -12,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
     public static BucketListDriver bucketListDriver = new BucketListDriver();
@@ -90,7 +92,8 @@ public class MainActivity extends Activity {
         public void onBindViewHolder(final ViewHolder holder, int position) {
             final Destination toAdd = bucketListDriver.bucketListToArray()[position];
 
-            //TODO fill data in cardview
+            holder.destinationIcon.setImageResource(toAdd.getImageId());
+            holder.destinationName.setText(toAdd.getName());
         }
 
         // Return the size of your dataset (invoked by the layout manager)
@@ -103,13 +106,13 @@ public class MainActivity extends Activity {
         // Complex data items may need more than one view per item, and
         // you provide access to all the views for a data item in a view holder
         public static class ViewHolder extends RecyclerView.ViewHolder {
-            // each data item is just a string in this case
-            //TODO all components in the cardview
+            public ImageView destinationIcon;
+            public TextView destinationName;
 
             public ViewHolder(View view) {
                 super(view);
-                //TODO findviewbyid
-
+                destinationIcon = (ImageView) view.findViewById(R.id.recyclerMainIcon);
+                destinationName = (TextView) view.findViewById(R.id.recyclerMainName);
             }
         }
     }
