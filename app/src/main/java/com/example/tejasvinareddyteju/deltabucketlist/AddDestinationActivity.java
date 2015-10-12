@@ -39,6 +39,7 @@ public class AddDestinationActivity extends Activity {
 
     public static class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
         private BucketListDriver bucketListDriver = MainActivity.bucketListDriver;
+        private Destination[] possibleDestinations = bucketListDriver.possibleDestinationsToArray();
         private Context m;
 
         // Provide a suitable constructor (depends on the kind of dataset)
@@ -57,7 +58,7 @@ public class AddDestinationActivity extends Activity {
         // Replace the contents of a view (invoked by the layout manager)
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            final Destination toAdd = bucketListDriver.possibleDestinationsToArray()[position];
+            final Destination toAdd = possibleDestinations[position];
 
             holder.recyclerLocationName.setText(toAdd.getName());
             holder.recyclerLocationCode.setText("Airport Code: " + toAdd.getAirportCode());
@@ -84,7 +85,7 @@ public class AddDestinationActivity extends Activity {
         // Return the size of your dataset (invoked by the layout manager)
         @Override
         public int getItemCount() {
-            return bucketListDriver.possibleDestinationsToArray().length;
+            return possibleDestinations.length;
         }
 
         // Provide a reference to the views for each data item
@@ -100,10 +101,10 @@ public class AddDestinationActivity extends Activity {
             public ViewHolder(View view) {
                 super(view);
                 //FIXME
-                recyclerLocationName = (TextView) view.findViewById(R.id.recyclerDestinationName);
-                recyclerLocationCode = (TextView) view.findViewById(R.id.recyclerDestinationCode);
-                recyclerLocationImage = (ImageView) view.findViewById(R.id.recyclerDestinationIcon);
-                recyclerLocationSwitch = (Switch) view.findViewById(R.id.recyclerDestinationSwitch);
+                recyclerLocationName = (TextView) view.findViewById(R.id.recyclerAddDestinationName);
+                recyclerLocationCode = (TextView) view.findViewById(R.id.recyclerAddDestinationCode);
+                recyclerLocationImage = (ImageView) view.findViewById(R.id.recyclerAddDestinationIcon);
+                recyclerLocationSwitch = (Switch) view.findViewById(R.id.recyclerAddDestinationSwitch);
             }
         }
     }
