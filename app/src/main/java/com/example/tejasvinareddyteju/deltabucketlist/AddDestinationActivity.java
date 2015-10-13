@@ -32,6 +32,9 @@ public class AddDestinationActivity extends Activity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        //Add dividers
+        mRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(getApplicationContext()));
+
         // specify an adapter (see also next example)
         mAdapter = new RecyclerAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
