@@ -8,7 +8,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/bucketlistlogo"
         android:label="@string/app_name"
-        android:theme="@style/MaterialLightTheme">
+        android:theme="@style/MaterialLightTheme" >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -27,16 +27,16 @@
                 android:value="com.example.tejasvinareddyteju.deltabucketlist.MainActivity" />
         </activity>
         <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"
+            android:name=".DestinationInformationActivity"
+            android:label="@string/title_activity_destination_information"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.tejasvinareddyteju.deltabucketlist.MainActivity" />
         </activity>
         <activity
-            android:name=".DestinationInformationActivity"
-            android:label="@string/title_activity_destination_information"
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings_activity_test"
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
