@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
     }
 
     public static class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-        private BucketListDriver bucketListDriver = MainActivity.bucketListDriver;
+        private static BucketListDriver bucketListDriver = MainActivity.bucketListDriver;
         private Context m;
 
         // Provide a suitable constructor (depends on the kind of dataset)

@@ -34,8 +34,8 @@
         android:text="Airport Code"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <Switch
-        android:id="@+id/recyclerAddDestinationSwitch"
+    <CheckBox
+        android:id="@+id/recyclerAddDestinationCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

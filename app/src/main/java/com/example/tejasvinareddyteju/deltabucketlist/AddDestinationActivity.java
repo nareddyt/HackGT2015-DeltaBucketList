@@ -8,9 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 public class AddDestinationActivity extends Activity {
@@ -60,7 +60,7 @@ public class AddDestinationActivity extends Activity {
 
         // Replace the contents of a view (invoked by the layout manager)
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             final Destination toAdd = possibleDestinations[position];
 
             holder.recyclerLocationName.setText(toAdd.getName());
@@ -68,11 +68,12 @@ public class AddDestinationActivity extends Activity {
             holder.recyclerLocationImage.setImageResource(toAdd.getImageId());
 
             if (bucketListDriver.hasDestination(toAdd)) {
-                holder.recyclerLocationSwitch.setChecked(true);
+                holder.recyclerLocationCheckBox.setChecked(true);
             } else {
-                holder.recyclerLocationSwitch.setChecked(false);
+                holder.recyclerLocationCheckBox.setChecked(false);
             }
-            holder.recyclerLocationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            holder.recyclerLocationCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
                         bucketListDriver.addDestination(toAdd);
@@ -98,7 +99,7 @@ public class AddDestinationActivity extends Activity {
             public TextView recyclerLocationName;
             public TextView recyclerLocationCode;
             public ImageView recyclerLocationImage;
-            public Switch recyclerLocationSwitch;
+            public CheckBox recyclerLocationCheckBox;
 
             public ViewHolder(View view) {
                 super(view);
@@ -106,7 +107,7 @@ public class AddDestinationActivity extends Activity {
                 recyclerLocationName = (TextView) view.findViewById(R.id.recyclerAddDestinationName);
                 recyclerLocationCode = (TextView) view.findViewById(R.id.recyclerAddDestinationCode);
                 recyclerLocationImage = (ImageView) view.findViewById(R.id.recyclerAddDestinationIcon);
-                recyclerLocationSwitch = (Switch) view.findViewById(R.id.recyclerAddDestinationSwitch);
+                recyclerLocationCheckBox = (CheckBox) view.findViewById(R.id.recyclerAddDestinationCheckBox);
             }
         }
     }
