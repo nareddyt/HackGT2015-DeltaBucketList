@@ -5,12 +5,7 @@ import java.util.Random;
 //FIXME use id as main identifier
 //FIXME add state locations
 
-/**
- * Created by Rishi on 9/26/2015.
- */
 public class Destination implements Comparable<Destination> {
-    public static int numberOfDestinations = 0;
-    private int id;
     private String name;
     private String airportCode;
     private int imageId;
@@ -19,8 +14,6 @@ public class Destination implements Comparable<Destination> {
     private Random rand = new Random();
     public Destination(String name) {
         this.name = name;
-        this.id = Destination.numberOfDestinations;
-        Destination.numberOfDestinations++;
 
         if (name.equals("New York City")) {
             airportCode = "JFK";
@@ -75,10 +68,6 @@ public class Destination implements Comparable<Destination> {
         }
 
         cost = 150 + rand.nextInt(100);
-    }
-
-    public int getId() {
-        return id;
     }
 
     public int getCost() {

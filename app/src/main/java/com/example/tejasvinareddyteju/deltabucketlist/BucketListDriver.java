@@ -1,28 +1,24 @@
 package com.example.tejasvinareddyteju.deltabucketlist;
 
-/**
- * Created by Kavin and Teju on 9/26/2015.
- */
-
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BucketListDriver {
-    private ArrayList<Destination> bucketList = new ArrayList<Destination>();
-    private ArrayList<Destination> possibleDestinations = new ArrayList<Destination>();
+    private Map<Destination, Boolean> bucketListMap = new HashMap<Destination, Boolean>();
 
     public BucketListDriver() {
-        possibleDestinations.add(new Destination("New York City"));
-        possibleDestinations.add(new Destination("Atlanta"));
-        possibleDestinations.add(new Destination("Los Angeles"));
-        possibleDestinations.add(new Destination("Dallas"));
-        possibleDestinations.add(new Destination("Las Vegas"));
-        possibleDestinations.add(new Destination("Boston"));
-        possibleDestinations.add(new Destination("Detroit"));
-        possibleDestinations.add(new Destination("Chicago"));
-        possibleDestinations.add(new Destination("Denver"));
-        possibleDestinations.add(new Destination("San Francisco"));
-        Collections.sort(possibleDestinations);
+        bucketListMap.put(new Destination("New York City"), false);
+        bucketListMap.put(new Destination("Atlanta"), false);
+        bucketListMap.put(new Destination("Los Angeles"), false);
+        bucketListMap.put(new Destination("Dallas"), false);
+        bucketListMap.put(new Destination("Las Vegas"), false);
+        bucketListMap.put(new Destination("Boston"), false);
+        bucketListMap.put(new Destination("Detroit"), false);
+        bucketListMap.put(new Destination("Chicago"), false);
+        bucketListMap.put(new Destination("Denver"), false);
+        bucketListMap.put(new Destination("San Francisco"), false);
+        // Collections.sort(bucketListMap);
     }
 
     public static String[] destinationToStringArray(Destination[] dests) {
@@ -33,52 +29,36 @@ public class BucketListDriver {
         return strings;
     }
 
-    public boolean hasDestination(Destination destination) {
-        for (Destination d : bucketList) {
-            if (destination.equals(d)) {
-                return true;
+    public void addDestination(Destination place) {
+        bucketListMap.put(place, true);
+    }
+
+    public boolean hasDestination(Destination toCheck) {
+        return bucketListMap.get(toCheck);
+    }
+
+    public Destination[] getArrayOfDestinations() {
+        ArrayList<Destination> toReturn = new ArrayList<Destination>();
+
+        for (Destination d : bucketListMap.keySet()) {
+            if (bucketListMap.get(d)) {
+                toReturn.add(d);
             }
         }
 
-        return false;
-    }
-
-    public boolean addDestination(Destination place) {
-        if (!alreadyExists(place)) {
-            bucketList.add(place);
-            return true;
-        }
-        return false;
-    }
-
-    public Destination findDestinationById(int id) {
-        for (Destination d : possibleDestinations) {
-            if (d.getId() == id) {
-                return d;
-            }
-        }
-
-        return null;
-    }
-
-    public boolean alreadyExists(Destination toCheck) {
-        return bucketList.contains(toCheck);
-    }
-
-    public Destination[] bucketListToArray() {
-        return bucketList.toArray(new Destination[bucketList.size()]);
+        return toReturn.toArray(new Destination[1]);
     }
 
     public Destination[] possibleDestinationsToArray() {
-        return possibleDestinations.toArray(new Destination[possibleDestinations.size()]);
+        return bucketListMap.keySet().toArray(new Destination[1]);
     }
 
     public void removeDestination(Destination place) {
-        bucketList.remove(place);
+        bucketListMap.put(place, false);
     }
 
     public Destination findDestinationByName(String name) {
-        for (Destination d : possibleDestinations) {
+        for (Destination d : bucketListMap.keySet()) {
             if (d.getName().equals(name)) {
                 return d;
             }
