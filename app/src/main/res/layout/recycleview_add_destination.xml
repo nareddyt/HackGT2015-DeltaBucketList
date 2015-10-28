@@ -20,7 +20,10 @@
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/recyclerAddDestinationIcon"
         android:maxLines="1"
-        android:padding="8dp"
+        android:paddingBottom="0dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="2dp"
         android:text="Location Name"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -28,10 +31,39 @@
         android:id="@+id/recyclerAddDestinationCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/recyclerAddDestinationName"
         android:layout_toEndOf="@+id/recyclerAddDestinationIcon"
-        android:padding="8dp"
-        android:text="Airport Code"
+        android:paddingBottom="2dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="0dp"
+        android:text="Airport Code: To Set"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/recyclerAddDestinationAvgCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recyclerAddDestinationCode"
+        android:layout_toEndOf="@+id/recyclerAddDestinationIcon"
+        android:paddingBottom="2dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="2dp"
+        android:text="Average Cost: To Set"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/recyclerAddDestinationMinCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recyclerAddDestinationAvgCost"
+        android:layout_toEndOf="@+id/recyclerAddDestinationIcon"
+        android:paddingBottom="2dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="2dp"
+        android:text="Lowest Cost: To Set"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <CheckBox
