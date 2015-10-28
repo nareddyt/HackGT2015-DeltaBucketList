@@ -3,7 +3,11 @@ package com.example.tejasvinareddyteju.deltabucketlist;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -94,6 +98,15 @@ public class MainActivity extends Activity {
 
             holder.destinationIcon.setImageResource(toAdd.getImageId());
             holder.destinationName.setText(toAdd.getName());
+
+            Bitmap bitmap = BitmapFactory.decodeResource(m.getResources(), toAdd.getImageId());
+            Palette palette = Palette.generate(bitmap);
+
+            Palette.Swatch swatch = palette.getVibrantSwatch();
+            int backgroundColor = swatch.getRgb();
+            holder.destinationName.setBackgroundColor(backgroundColor);
+            holder.destinationName.getBackground().setAlpha(175);
+            holder.destinationName.setTextColor(Color.WHITE);
         }
 
         // Return the size of your dataset (invoked by the layout manager)
