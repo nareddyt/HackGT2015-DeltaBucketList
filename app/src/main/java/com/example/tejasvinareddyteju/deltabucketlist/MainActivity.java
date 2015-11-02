@@ -76,7 +76,6 @@ public class MainActivity extends Activity {
     }
 
     public static class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-
         private Context m;
 
         // Provide a suitable constructor (depends on the kind of dataset)
@@ -108,6 +107,15 @@ public class MainActivity extends Activity {
             holder.destinationName.setBackgroundColor(backgroundColor);
             holder.destinationName.getBackground().setAlpha(175);
             holder.destinationName.setTextColor(Color.WHITE);
+
+            holder.destinationIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View view) {
+                    Intent intent = new Intent(m, DestinationInformationActivity.class);
+                    intent.putExtra("DESTINATION_TO_VIEW", toAdd.getName());
+                    m.startActivity(intent);
+                }
+            });
         }
 
         // Return the size of your dataset (invoked by the layout manager)
