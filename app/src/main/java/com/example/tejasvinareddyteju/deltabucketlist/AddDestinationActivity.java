@@ -41,8 +41,6 @@ public class AddDestinationActivity extends Activity {
     }
 
     public static class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-        private BucketListDriver bucketListDriver = MainActivity.bucketListDriver;
-        private Destination[] possibleDestinations = bucketListDriver.possibleDestinationsToArray();
         private Context m;
 
         // Provide a suitable constructor (depends on the kind of dataset)
@@ -61,13 +59,14 @@ public class AddDestinationActivity extends Activity {
         // Replace the contents of a view (invoked by the layout manager)
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
-            final Destination toAdd = possibleDestinations[position];
+            final Destination toAdd = BucketList.getAllDestinations().get(position);
+            final String name = toAdd.getName();
 
-            holder.recyclerLocationName.setText(toAdd.getName());
+            holder.recyclerLocationName.setText(name);
             holder.recyclerLocationCode.setText("Airport Code: " + toAdd.getAirportCode());
             holder.recyclerLocationImage.setImageResource(toAdd.getImageId());
 
-            if (bucketListDriver.hasDestination(toAdd)) {
+            if (BucketList.hasDestination(name)) {
                 holder.recyclerLocationCheckBox.setChecked(true);
             } else {
                 holder.recyclerLocationCheckBox.setChecked(false);
@@ -76,11 +75,11 @@ public class AddDestinationActivity extends Activity {
             holder.recyclerLocationCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
-                        bucketListDriver.addDestination(toAdd);
-                        System.out.println(toAdd.getName() + " added!");
+                        BucketList.addDestination(name);
+                        System.out.println(name + " added!");
                     } else {
-                        bucketListDriver.removeDestination(toAdd);
-                        System.out.println(toAdd.getName() + " removed!");
+                        BucketList.removeDestination(name);
+                        System.out.println(name + " removed!");
                     }
                 }
             });
@@ -89,7 +88,7 @@ public class AddDestinationActivity extends Activity {
         // Return the size of your dataset (invoked by the layout manager)
         @Override
         public int getItemCount() {
-            return possibleDestinations.length;
+            return BucketList.getNumberOfAllDestinations();
         }
 
         // Provide a reference to the views for each data item

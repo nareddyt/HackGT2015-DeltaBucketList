@@ -9,9 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DestinationInformationActivity extends Activity {
-
-    private BucketListDriver bucketListDriver = MainActivity.bucketListDriver;
-    private String message;
+    private String message_destName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,12 +17,12 @@ public class DestinationInformationActivity extends Activity {
         setContentView(R.layout.activity_destination_information);
 
         Intent intent = getIntent();
-        message = intent.getStringExtra("DESTINATION_TO_VIEW");
+        message_destName = intent.getStringExtra("DESTINATION_TO_VIEW");
 
         // Create the text view
         TextView textViewHead = (TextView) findViewById(R.id.destinationName);
-        textViewHead.setText(message);
-        Destination dest = bucketListDriver.findDestinationByName(message);
+        textViewHead.setText(message_destName);
+        Destination dest = BucketList.getDestination(message_destName);
 
         TextView textViewCode = (TextView) findViewById(R.id.destinationCode);
         textViewCode.setText(dest.getAirportCode());
@@ -55,9 +53,8 @@ public class DestinationInformationActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_delete_bucketlist_item) {
-            System.out.println(message + " deleted");
-            Destination toRemove = bucketListDriver.findDestinationByName(message);
-            bucketListDriver.removeDestination(toRemove);
+            System.out.println(message_destName + " deleted");
+            BucketList.removeDestination(message_destName);
 
             finish();
             return true;

@@ -20,13 +20,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
-    public static BucketListDriver bucketListDriver = new BucketListDriver();
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        new BucketList();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mRecyclerView = (RecyclerView) findViewById(R.id.bucketlistRecyclerView);
@@ -75,7 +76,7 @@ public class MainActivity extends Activity {
     }
 
     public static class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-        private static BucketListDriver bucketListDriver = MainActivity.bucketListDriver;
+
         private Context m;
 
         // Provide a suitable constructor (depends on the kind of dataset)
@@ -94,7 +95,7 @@ public class MainActivity extends Activity {
         // Replace the contents of a view (invoked by the layout manager)
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            final Destination toAdd = bucketListDriver.bucketListToArray()[position];
+            final Destination toAdd = BucketList.getAddedDestinations().get(position);
 
             holder.destinationIcon.setImageResource(toAdd.getImageId());
             holder.destinationName.setText(toAdd.getName());
@@ -112,7 +113,7 @@ public class MainActivity extends Activity {
         // Return the size of your dataset (invoked by the layout manager)
         @Override
         public int getItemCount() {
-            return bucketListDriver.bucketListToArray().length;
+            return BucketList.getNumberOfAddedDestinations();
         }
 
         // Provide a reference to the views for each data item

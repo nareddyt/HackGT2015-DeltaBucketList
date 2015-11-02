@@ -2,16 +2,17 @@ package com.example.tejasvinareddyteju.deltabucketlist;
 
 import java.util.Random;
 
-//FIXME use id as main identifier
 //FIXME add state locations
 
 public class Destination implements Comparable<Destination> {
     private String name;
-    private String airportCode;
     private int imageId;
+    private String airportCode;
     private int cost;
+
     private String dateTime;
     private Random rand = new Random();
+
     public Destination(String name) {
         this.name = name;
 
