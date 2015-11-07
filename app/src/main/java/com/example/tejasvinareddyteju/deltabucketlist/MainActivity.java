@@ -86,7 +86,7 @@ public class MainActivity extends Activity {
         public RecyclerAdapter(Context m) {
             this.m = m;
             // FIXME updating
-            sortedList = BucketList.getAllDestinations();
+            sortedList = BucketList.getAddedDestinations();
             Collections.sort(sortedList, new Destination.PriorityComparator());
         }
 
