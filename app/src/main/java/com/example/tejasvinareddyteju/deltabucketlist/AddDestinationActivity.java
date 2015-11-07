@@ -13,6 +13,9 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Collections;
+import java.util.List;
+
 public class AddDestinationActivity extends Activity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -42,10 +45,14 @@ public class AddDestinationActivity extends Activity {
 
     public static class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
         private Context m;
+        private List<Destination> sortedList;
 
         // Provide a suitable constructor (depends on the kind of dataset)
         public RecyclerAdapter(Context m) {
             this.m = m;
+            // FIXME updating
+            sortedList = BucketList.getAllDestinations();
+            Collections.sort(sortedList, new Destination.NameComparator());
         }
 
         // Create new views (invoked by the layout manager)
@@ -60,7 +67,7 @@ public class AddDestinationActivity extends Activity {
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.recyclerLocationCheckBox.setOnCheckedChangeListener(null);
 
-            final Destination toAdd = BucketList.getAllDestinations().get(position);
+            final Destination toAdd = sortedList.get(position);
             final String name = toAdd.getName();
 
             holder.recyclerLocationName.setText(name);

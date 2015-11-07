@@ -1,5 +1,6 @@
 package com.example.tejasvinareddyteju.deltabucketlist;
 
+import java.util.Comparator;
 import java.util.Random;
 
 //FIXME add state locations
@@ -9,8 +10,8 @@ public class Destination implements Comparable<Destination> {
     private int imageId;
     private String airportCode;
     private int cost;
-
     private String dateTime;
+    private int priority;
     private Random rand = new Random();
 
     public Destination(String name) {
@@ -69,6 +70,7 @@ public class Destination implements Comparable<Destination> {
         }
 
         cost = 150 + rand.nextInt(100);
+        priority = rand.nextInt(10);
     }
 
     public int getCost() {
@@ -109,5 +111,17 @@ public class Destination implements Comparable<Destination> {
 
     public int hashCode() {
         return getName().hashCode();
+    }
+
+    public static class NameComparator implements Comparator<Destination> {
+        public int compare(Destination d1, Destination d2) {
+            return d1.name.compareTo(d2.name);
+        }
+    }
+
+    public static class PriorityComparator implements Comparator<Destination> {
+        public int compare(Destination d1, Destination d2) {
+            return d1.priority - d2.priority;
+        }
     }
 }

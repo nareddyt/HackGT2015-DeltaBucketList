@@ -19,6 +19,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Collections;
+import java.util.List;
+
 public class MainActivity extends Activity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -77,10 +80,14 @@ public class MainActivity extends Activity {
 
     public static class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
         private Context m;
+        private List<Destination> sortedList;
 
         // Provide a suitable constructor (depends on the kind of dataset)
         public RecyclerAdapter(Context m) {
             this.m = m;
+            // FIXME updating
+            sortedList = BucketList.getAllDestinations();
+            Collections.sort(sortedList, new Destination.PriorityComparator());
         }
 
         // Create new views (invoked by the layout manager)
@@ -94,7 +101,9 @@ public class MainActivity extends Activity {
         // Replace the contents of a view (invoked by the layout manager)
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            final Destination toAdd = BucketList.getAddedDestinations().get(position);
+            holder.destinationIcon.setOnClickListener(null);
+
+            final Destination toAdd = sortedList.get(position);
 
             holder.destinationIcon.setImageResource(toAdd.getImageId());
             holder.destinationName.setText(toAdd.getName());
