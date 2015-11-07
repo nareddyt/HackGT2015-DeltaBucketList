@@ -56,9 +56,10 @@ public class AddDestinationActivity extends Activity {
             return vh;
         }
 
-        // Replace the contents of a view (invoked by the layout manager)
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
+            holder.recyclerLocationCheckBox.setOnCheckedChangeListener(null);
+
             final Destination toAdd = BucketList.getAllDestinations().get(position);
             final String name = toAdd.getName();
 
