@@ -85,7 +85,6 @@ public class MainActivity extends Activity {
         // Provide a suitable constructor (depends on the kind of dataset)
         public RecyclerAdapter(Context m) {
             this.m = m;
-            // FIXME updating
             sortedList = BucketList.getAddedDestinations();
             Collections.sort(sortedList, new Destination.PriorityComparator());
         }
@@ -103,10 +102,16 @@ public class MainActivity extends Activity {
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.destinationIcon.setOnClickListener(null);
 
+            if (BucketList.hasAddedDestinationsChanged()) {
+                System.out.println("Added destinations changed!");
+                sortedList = BucketList.getAddedDestinations();
+                Collections.sort(sortedList, new Destination.PriorityComparator());
+            }
             final Destination toAdd = sortedList.get(position);
+            final String name = toAdd.getName();
 
             holder.destinationIcon.setImageResource(toAdd.getImageId());
-            holder.destinationName.setText(toAdd.getName());
+            holder.destinationName.setText(name);
 
             Bitmap bitmap = BitmapFactory.decodeResource(m.getResources(), toAdd.getImageId());
             Palette palette = Palette.generate(bitmap);
@@ -121,7 +126,7 @@ public class MainActivity extends Activity {
                 @Override
                 public void onClick(final View view) {
                     Intent intent = new Intent(m, DestinationInformationActivity.class);
-                    intent.putExtra("DESTINATION_TO_VIEW", toAdd.getName());
+                    intent.putExtra("DESTINATION_TO_VIEW", name);
                     m.startActivity(intent);
                 }
             });
@@ -130,7 +135,7 @@ public class MainActivity extends Activity {
         // Return the size of your dataset (invoked by the layout manager)
         @Override
         public int getItemCount() {
-            return BucketList.getNumberOfAddedDestinations();
+            return sortedList.size();
         }
 
         // Provide a reference to the views for each data item

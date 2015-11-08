@@ -3,7 +3,7 @@ package com.example.tejasvinareddyteju.deltabucketlist;
 import java.util.Comparator;
 import java.util.Random;
 
-//FIXME add state locations
+//TODO add state locations
 
 public class Destination implements Comparable<Destination> {
     private String name;
@@ -14,6 +14,7 @@ public class Destination implements Comparable<Destination> {
     private int priority;
     private Random rand = new Random();
 
+    //FIXME hardcoding
     public Destination(String name) {
         this.name = name;
 

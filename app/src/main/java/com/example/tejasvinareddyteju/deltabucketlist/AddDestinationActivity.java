@@ -50,7 +50,6 @@ public class AddDestinationActivity extends Activity {
         // Provide a suitable constructor (depends on the kind of dataset)
         public RecyclerAdapter(Context m) {
             this.m = m;
-            // FIXME updating
             sortedList = BucketList.getAllDestinations();
             Collections.sort(sortedList, new Destination.NameComparator());
         }
@@ -67,6 +66,11 @@ public class AddDestinationActivity extends Activity {
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.recyclerLocationCheckBox.setOnCheckedChangeListener(null);
 
+            if (BucketList.hasAllDestinationsChanged()) {
+                System.out.println("All Destinations Changed!");
+                sortedList = BucketList.getAllDestinations();
+                Collections.sort(sortedList, new Destination.NameComparator());
+            }
             final Destination toAdd = sortedList.get(position);
             final String name = toAdd.getName();
 
@@ -96,7 +100,7 @@ public class AddDestinationActivity extends Activity {
         // Return the size of your dataset (invoked by the layout manager)
         @Override
         public int getItemCount() {
-            return BucketList.getNumberOfAllDestinations();
+            return sortedList.size();
         }
 
         // Provide a reference to the views for each data item
@@ -110,7 +114,6 @@ public class AddDestinationActivity extends Activity {
 
             public ViewHolder(View view) {
                 super(view);
-                //FIXME
                 recyclerLocationName = (TextView) view.findViewById(R.id.recyclerAddDestinationName);
                 recyclerLocationCode = (TextView) view.findViewById(R.id.recyclerAddDestinationCode);
                 recyclerLocationImage = (ImageView) view.findViewById(R.id.recyclerAddDestinationIcon);
