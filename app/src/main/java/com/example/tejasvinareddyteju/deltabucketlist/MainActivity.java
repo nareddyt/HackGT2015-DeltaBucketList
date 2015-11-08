@@ -19,8 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
 
 public class MainActivity extends Activity {
     private RecyclerView mRecyclerView;
@@ -80,13 +79,13 @@ public class MainActivity extends Activity {
 
     public static class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
         private Context m;
-        private List<Destination> sortedList;
+        private Destination[] sortedList;
 
         // Provide a suitable constructor (depends on the kind of dataset)
         public RecyclerAdapter(Context m) {
             this.m = m;
             sortedList = BucketList.getAddedDestinations();
-            Collections.sort(sortedList, new Destination.PriorityComparator());
+            Arrays.sort(sortedList, new Destination.PriorityComparator());
         }
 
         // Create new views (invoked by the layout manager)
@@ -102,12 +101,16 @@ public class MainActivity extends Activity {
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.destinationIcon.setOnClickListener(null);
 
+            //FIXME updating this does not always get called
             if (BucketList.hasAddedDestinationsChanged()) {
                 System.out.println("Added destinations changed!");
                 sortedList = BucketList.getAddedDestinations();
-                Collections.sort(sortedList, new Destination.PriorityComparator());
+                Arrays.sort(sortedList, new Destination.PriorityComparator());
             }
-            final Destination toAdd = sortedList.get(position);
+
+            System.out.println("Added Destinations = " + Arrays.deepToString(sortedList));
+
+            final Destination toAdd = sortedList[position];
             final String name = toAdd.getName();
 
             holder.destinationIcon.setImageResource(toAdd.getImageId());
@@ -135,7 +138,7 @@ public class MainActivity extends Activity {
         // Return the size of your dataset (invoked by the layout manager)
         @Override
         public int getItemCount() {
-            return sortedList.size();
+            return sortedList.length;
         }
 
         // Provide a reference to the views for each data item

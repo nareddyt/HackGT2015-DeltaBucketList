@@ -73,29 +73,39 @@ public class BucketList {
      * Returns all of the possible destinations
      * @return List<Destination>
      */
-    public static List<Destination> getAllDestinations() {
+    public static Destination[] getAllDestinations() {
         allChanged = false;
-        return new ArrayList<Destination>(allDestinations.values());
+        return allDestinations.values().toArray(new Destination[allDestinations.size()]);
     }
 
     /**
      * Returns all the destinations in the bucketlist
      * @return List<Destination>
      */
-    public static List<Destination> getAddedDestinations() {
+    public static Destination[] getAddedDestinations() {
         addedChanged = false;
 
         List<Destination> toReturn = new ArrayList<Destination>();
         for (String name : addedDestinations) {
             toReturn.add(allDestinations.get(name));
         }
-        return toReturn;
+
+        return toReturn.toArray(new Destination[addedDestinations.size()]);
     }
 
+    /**
+     * Returns whether the list of all Destinations has been changed since it was retrieved
+     *
+     * @return a boolean
+     */
     public static boolean hasAllDestinationsChanged() {
         return allChanged;
     }
 
+    /**
+     * Returns whether the bucketlist has been changed since it was retrieved
+     * @return a boolean
+     */
     public static boolean hasAddedDestinationsChanged() {
         return addedChanged;
     }

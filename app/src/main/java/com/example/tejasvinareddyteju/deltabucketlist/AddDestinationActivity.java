@@ -13,8 +13,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
 
 public class AddDestinationActivity extends Activity {
     private RecyclerView mRecyclerView;
@@ -45,13 +44,13 @@ public class AddDestinationActivity extends Activity {
 
     public static class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
         private Context m;
-        private List<Destination> sortedList;
+        private Destination[] sortedList;
 
         // Provide a suitable constructor (depends on the kind of dataset)
         public RecyclerAdapter(Context m) {
             this.m = m;
             sortedList = BucketList.getAllDestinations();
-            Collections.sort(sortedList, new Destination.NameComparator());
+            Arrays.sort(sortedList, new Destination.NameComparator());
         }
 
         // Create new views (invoked by the layout manager)
@@ -66,12 +65,16 @@ public class AddDestinationActivity extends Activity {
         public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.recyclerLocationCheckBox.setOnCheckedChangeListener(null);
 
+            //FIXME updating this does not always get called
             if (BucketList.hasAllDestinationsChanged()) {
                 System.out.println("All Destinations Changed!");
                 sortedList = BucketList.getAllDestinations();
-                Collections.sort(sortedList, new Destination.NameComparator());
+                Arrays.sort(sortedList, new Destination.NameComparator());
             }
-            final Destination toAdd = sortedList.get(position);
+
+            System.out.println("All Destinations = " + Arrays.deepToString(sortedList));
+
+            final Destination toAdd = sortedList[position];
             final String name = toAdd.getName();
 
             holder.recyclerLocationName.setText(name);
@@ -100,7 +103,7 @@ public class AddDestinationActivity extends Activity {
         // Return the size of your dataset (invoked by the layout manager)
         @Override
         public int getItemCount() {
-            return sortedList.size();
+            return sortedList.length;
         }
 
         // Provide a reference to the views for each data item

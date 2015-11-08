@@ -4,15 +4,18 @@ import java.util.Comparator;
 import java.util.Random;
 
 //TODO add state locations
+//TODO flight integration
 
 public class Destination implements Comparable<Destination> {
     private String name;
     private int imageId;
     private String airportCode;
-    private int cost;
-    private String dateTime;
     private int priority;
     private Random rand = new Random();
+
+    //TODO algorithm to get these from flights
+    private int cost;
+    private String dateTime;
 
     //FIXME hardcoding
     public Destination(String name) {
@@ -72,6 +75,7 @@ public class Destination implements Comparable<Destination> {
 
         cost = 150 + rand.nextInt(100);
         priority = rand.nextInt(10);
+        System.out.println(name + ": Priority = " + priority);
     }
 
     public int getCost() {
@@ -99,19 +103,23 @@ public class Destination implements Comparable<Destination> {
         return imageId;
     }
 
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        } else if (!(obj instanceof Destination)) {
+    public boolean equals(Object other) {
+        if (other == null || !(other instanceof Destination)) {
             return false;
         }
 
-        Destination d = (Destination) obj;
+        Destination d = (Destination) other;
         return d.getName().equals(this.getName());
     }
 
+    @Override
     public int hashCode() {
         return getName().hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return this.getName();
     }
 
     public static class NameComparator implements Comparator<Destination> {
