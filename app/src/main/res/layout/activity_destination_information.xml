@@ -85,7 +85,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <SeekBar
-        android:id="@+id/seekBar2"
+        android:id="@+id/destinationPriority"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/destinationImage"
@@ -97,7 +97,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/seekBar2"
+        android:layout_above="@+id/destinationPriority"
         android:layout_alignEnd="@+id/destinationCode"
         android:layout_alignParentStart="true"
         android:text="Destination Priority?"

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class DestinationInformationActivity extends Activity {
@@ -22,7 +23,7 @@ public class DestinationInformationActivity extends Activity {
         // Create the text view
         TextView textViewHead = (TextView) findViewById(R.id.destinationName);
         textViewHead.setText(message_destName);
-        Destination dest = BucketList.getDestination(message_destName);
+        final Destination dest = BucketList.getDestination(message_destName);
 
         TextView textViewCode = (TextView) findViewById(R.id.destinationCode);
         textViewCode.setText(dest.getAirportCode());
@@ -35,6 +36,27 @@ public class DestinationInformationActivity extends Activity {
 
         ImageView imageView = (ImageView) findViewById(R.id.destinationImage);
         imageView.setImageResource(dest.getImageId());
+
+        SeekBar priorityBar = (SeekBar) findViewById(R.id.destinationPriority);
+        priorityBar.setMax(10);     // FIXME make a public static final variable
+        priorityBar.setProgress(dest.getPriority());
+        priorityBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progresValue, boolean fromUser) {
+                // FIXME bug not saving values
+                dest.setPriority(progresValue);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // Do nothing
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // Do nothing
+            }
+        });
     }
 
     @Override
