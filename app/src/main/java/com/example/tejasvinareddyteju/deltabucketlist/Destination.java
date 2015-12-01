@@ -1,7 +1,8 @@
 package com.example.tejasvinareddyteju.deltabucketlist;
 
+import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Random;
+import java.util.List;
 
 //TODO add state locations
 //TODO flight integration
@@ -11,15 +12,14 @@ public class Destination implements Comparable<Destination> {
     private int imageId;
     private String airportCode;
     private int priority;
-    private Random rand = new Random();
 
     //TODO algorithm to get these from flights
-    private int cost;
-    private String dateTime;
+    private List<Flight> flights;
 
     //FIXME hardcoding
     public Destination(String name) {
         this.name = name;
+        flights = new ArrayList<>();
 
         if (name.equals("New York City")) {
             airportCode = "JFK";
@@ -53,37 +53,18 @@ public class Destination implements Comparable<Destination> {
             imageId = R.mipmap.sanfransisco;
         }
 
-        int choice = rand.nextInt(8);
-
-        if (choice == 7) {
-            dateTime = "8:45PM on 10/4/15";
-        } else if (choice == 6) {
-            dateTime = "4:25PM on 10/13/15";
-        } else if (choice == 5) {
-            dateTime = "10:25AM on 10/19/15";
-        } else if (choice == 4) {
-            dateTime = "1:20AM on 10/09/15";
-        } else if (choice == 3) {
-            dateTime = "10:55AM on 10/30/15";
-        } else if (choice == 2) {
-            dateTime = "12:25AM on 11/07/15";
-        } else if (choice == 1) {
-            dateTime = "5:25AM on 10/19/15";
-        } else {
-            dateTime = "3:55PM on 11/02/15";
-        }
-
-        cost = 150 + rand.nextInt(100);
-        priority = rand.nextInt(10);
+        priority = 1;
         System.out.println(name + ": Priority = " + priority);
     }
 
-    public int getCost() {
-        return cost;
+    public int getBestCost() {
+        // TODO
+        return -1;
     }
 
-    public String getDateTime() {
-        return dateTime;
+    public String getBestDateTime() {
+        // TODO
+        return "TO DO";
     }
 
     public String getName() {

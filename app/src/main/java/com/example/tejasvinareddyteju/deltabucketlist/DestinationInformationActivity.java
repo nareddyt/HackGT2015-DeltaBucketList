@@ -28,10 +28,10 @@ public class DestinationInformationActivity extends Activity {
         textViewCode.setText(dest.getAirportCode());
 
         TextView textViewCost = (TextView) findViewById(R.id.destinationCost);
-        textViewCost.setText("$" + dest.getCost());
+        textViewCost.setText("$" + dest.getBestCost());
 
         TextView textViewDate = (TextView) findViewById(R.id.destinationDate);
-        textViewDate.setText(dest.getDateTime());
+        textViewDate.setText(dest.getBestDateTime());
 
         ImageView imageView = (ImageView) findViewById(R.id.destinationImage);
         imageView.setImageResource(dest.getImageId());
