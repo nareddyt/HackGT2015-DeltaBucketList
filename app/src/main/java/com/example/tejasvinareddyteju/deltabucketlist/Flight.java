@@ -2,6 +2,8 @@ package com.example.tejasvinareddyteju.deltabucketlist;
 
 import java.util.Date;
 
+// TODO API calls to update this info
+
 public class Flight {
     // Only way to uniquly identify a flight is with these three fields
     private Date dateTime;

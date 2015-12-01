@@ -79,6 +79,8 @@ public class AddDestinationActivity extends Activity {
 
             holder.recyclerLocationName.setText(name);
             holder.recyclerLocationCode.setText("Airport Code: " + toAdd.getAirportCode());
+
+            // FIXME image sizes too big and cause lag
             holder.recyclerLocationImage.setImageResource(toAdd.getImageId());
 
             if (BucketList.hasDestination(name)) {

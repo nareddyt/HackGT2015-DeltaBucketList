@@ -13,13 +13,13 @@ public class Destination implements Comparable<Destination> {
     private String airportCode;
     private int priority;
 
-    //TODO algorithm to get these from flights
-    private List<Flight> flights;
+    //TODO API call to update flightsToHere
+    private List<Flight> flightsToHere;
 
     //FIXME hardcoding
     public Destination(String name) {
         this.name = name;
-        flights = new ArrayList<>();
+        flightsToHere = new ArrayList<>();
 
         // FIXME
         if (name.equals("New York City")) {
@@ -58,6 +58,7 @@ public class Destination implements Comparable<Destination> {
         System.out.println(name + ": Priority = " + priority);
     }
 
+    // TODO an algorithm to get the "best" instances based on all the possible flightsToHere
     public int getBestCost() {
         // TODO
         return -1;

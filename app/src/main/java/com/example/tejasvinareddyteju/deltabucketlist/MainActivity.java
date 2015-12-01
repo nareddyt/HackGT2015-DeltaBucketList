@@ -116,6 +116,7 @@ public class MainActivity extends Activity {
             holder.destinationIcon.setImageResource(toAdd.getImageId());
             holder.destinationName.setText(name);
 
+            // FIXME determine Palette color beforehand to prevent lagging
             Bitmap bitmap = BitmapFactory.decodeResource(m.getResources(), toAdd.getImageId());
             Palette palette = Palette.generate(bitmap);
 
