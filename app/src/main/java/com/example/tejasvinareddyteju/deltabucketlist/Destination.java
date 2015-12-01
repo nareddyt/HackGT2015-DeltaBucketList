@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Destination implements Comparable<Destination> {
     private String name;
-    private int imageId;
+    private int imageId;    // FIXME storing images
     private String airportCode;
     private int priority;
 
@@ -21,6 +21,7 @@ public class Destination implements Comparable<Destination> {
         this.name = name;
         flights = new ArrayList<>();
 
+        // FIXME
         if (name.equals("New York City")) {
             airportCode = "JFK";
             imageId = R.mipmap.newyorkcity;
