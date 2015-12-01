@@ -58,6 +58,14 @@ public class Destination implements Comparable<Destination> {
         System.out.println(name + ": Priority = " + priority);
     }
 
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
     // TODO an algorithm to get the "best" instances based on all the possible flightsToHere
     public int getBestCost() {
         // TODO

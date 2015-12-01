@@ -48,4 +48,24 @@ public class Flight {
     public Destination getEnd() {
         return end;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || !(o instanceof Flight)) {
+            return false;
+        }
+
+        Flight f = (Flight) o;
+        return f.dateTime.equals(this.dateTime) && f.airline.equals(this.airline) && f.flightNumber == this.flightNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return dateTime.hashCode() + airline.hashCode() + flightNumber;
+    }
+
+    @Override
+    public String toString() {
+        return airline + " " + flightNumber + " at " + dateTime;
+    }
 }
