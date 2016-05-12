@@ -8,39 +8,14 @@
             android:allowBackup="true"
             android:icon="@mipmap/bucketlistlogo"
             android:label="@string/app_name"
-            android:theme="@style/MaterialLightTheme">
+            android:theme="@style/MaterialTheme">
         <activity
-                android:name="tejasvinareddyteju.deltabucketlist.Activity.MainActivity"
-                android:label="@string/app_name">
+                android:name=".Activity.NavigationActivity"
+                android:label="@string/title_activity_navigation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity
-                android:name="tejasvinareddyteju.deltabucketlist.Activity.AddDestinationActivity"
-                android:label="@string/title_activity_add_bucket_list_item"
-                android:parentActivityName="tejasvinareddyteju.deltabucketlist.Activity.MainActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="tejasvinareddyteju.deltabucketlist.Activity.MainActivity"/>
-        </activity>
-        <activity
-                android:name="tejasvinareddyteju.deltabucketlist.Activity.DestinationInformationActivity"
-                android:label="@string/title_activity_destination_information"
-                android:parentActivityName="tejasvinareddyteju.deltabucketlist.Activity.MainActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="tejasvinareddyteju.deltabucketlist.Activity.MainActivity"/>
-        </activity>
-        <activity
-                android:name="tejasvinareddyteju.deltabucketlist.Activity.SettingsActivity"
-                android:label="@string/title_activity_settings_activity_test"
-                android:parentActivityName="tejasvinareddyteju.deltabucketlist.Activity.MainActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="tejasvinareddyteju.deltabucketlist.Activity.MainActivity"/>
         </activity>
     </application>
 

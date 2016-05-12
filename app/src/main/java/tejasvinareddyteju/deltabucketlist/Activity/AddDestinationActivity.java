@@ -1,8 +1,8 @@
 package tejasvinareddyteju.deltabucketlist.Activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,14 +12,14 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import tejasvinareddyteju.deltabucketlist.R;
 import tejasvinareddyteju.deltabucketlist.Model.BucketList;
 import tejasvinareddyteju.deltabucketlist.Model.Destination;
+import tejasvinareddyteju.deltabucketlist.R;
 import tejasvinareddyteju.deltabucketlist.UI.SimpleDividerItemDecoration;
 
 import java.util.Arrays;
 
-public class AddDestinationActivity extends Activity {
+public class AddDestinationActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;

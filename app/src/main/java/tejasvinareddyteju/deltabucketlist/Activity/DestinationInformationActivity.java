@@ -1,19 +1,45 @@
 package tejasvinareddyteju.deltabucketlist.Activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import tejasvinareddyteju.deltabucketlist.R;
 import tejasvinareddyteju.deltabucketlist.Model.BucketList;
 import tejasvinareddyteju.deltabucketlist.Model.Destination;
+import tejasvinareddyteju.deltabucketlist.R;
 
-public class DestinationInformationActivity extends Activity {
+public class DestinationInformationActivity extends AppCompatActivity {
     private String message_destName;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_destination_information, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_delete_bucketlist_item) {
+            System.out.println(message_destName + " deleted");
+            BucketList.removeDestination(message_destName);
+
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,31 +88,5 @@ public class DestinationInformationActivity extends Activity {
                 // Do nothing
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_destination_information, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_delete_bucketlist_item) {
-            System.out.println(message_destName + " deleted");
-            BucketList.removeDestination(message_destName);
-
-            finish();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }
