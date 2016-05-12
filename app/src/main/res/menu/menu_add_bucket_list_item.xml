@@ -1,2 +1,2 @@
 <menu xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.tejasvinareddyteju.deltabucketlist.AddDestinationActivity"></menu>
+      tools:context="tejasvinareddyteju.deltabucketlist.Activity.AddDestinationActivity"></menu>

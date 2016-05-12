@@ -1,4 +1,4 @@
-package com.example.tejasvinareddyteju.deltabucketlist;
+package tejasvinareddyteju.deltabucketlist.Activity;
 
 
 import android.annotation.TargetApi;
@@ -20,6 +20,7 @@ import android.preference.RingtonePreference;
 import android.support.v4.app.NavUtils;
 import android.text.TextUtils;
 import android.view.MenuItem;
+import tejasvinareddyteju.deltabucketlist.R;
 
 import java.util.List;
 
@@ -39,7 +40,9 @@ public class SettingsActivity extends PreferenceActivity {
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
      */
-    private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
+    private static Preference.OnPreferenceChangeListener
+            sBindPreferenceSummaryToValueListener = new Preference
+            .OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
             String stringValue = value.toString();
@@ -73,7 +76,8 @@ public class SettingsActivity extends PreferenceActivity {
                     } else {
                         // Set the summary to reflect the new ringtone display
                         // name.
-                        String name = ringtone.getTitle(preference.getContext());
+                        String name = ringtone.getTitle(preference.getContext
+                                ());
                         preference.setSummary(name);
                     }
                 }
@@ -88,15 +92,6 @@ public class SettingsActivity extends PreferenceActivity {
     };
 
     /**
-     * Helper method to determine if the device has an extra-large screen. For
-     * example, 10" tablets are extra-large.
-     */
-    private static boolean isXLargeTablet(Context context) {
-        return (context.getResources().getConfiguration().screenLayout
-                & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_XLARGE;
-    }
-
-    /**
      * Binds a preference's summary to its value. More specifically, when the
      * preference's value is changed, its summary (line of text below the
      * preference title) is updated to reflect the value. The summary is also
@@ -107,7 +102,8 @@ public class SettingsActivity extends PreferenceActivity {
      */
     private static void bindPreferenceSummaryToValue(Preference preference) {
         // Set the listener to watch for value changes.
-        preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
+        preference.setOnPreferenceChangeListener
+                (sBindPreferenceSummaryToValueListener);
 
         // Trigger the listener immediately with the preference's
         // current value.
@@ -117,21 +113,14 @@ public class SettingsActivity extends PreferenceActivity {
                         .getString(preference.getKey(), ""));
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setupActionBar();
-    }
-
     /**
-     * Set up the {@link android.app.ActionBar}, if the API is available.
+     * Helper method to determine if the device has an extra-large screen. For
+     * example, 10" tablets are extra-large.
      */
-    private void setupActionBar() {
-        ActionBar actionBar = getActionBar();
-        if (actionBar != null) {
-            // Show the Up button in the action bar.
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+    private static boolean isXLargeTablet(Context context) {
+        return (context.getResources().getConfiguration().screenLayout
+                & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration
+                .SCREENLAYOUT_SIZE_XLARGE;
     }
 
     @Override
@@ -147,31 +136,14 @@ public class SettingsActivity extends PreferenceActivity {
     }
 
     /**
-     * {@inheritDoc}
+     * Set up the {@link android.app.ActionBar}, if the API is available.
      */
-    @Override
-    public boolean onIsMultiPane() {
-        return isXLargeTablet(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public void onBuildHeaders(List<Header> target) {
-        loadHeadersFromResource(R.xml.pref_headers, target);
-    }
-
-    /**
-     * This method stops fragment injection in malicious applications.
-     * Make sure to deny any unknown fragments here.
-     */
-    protected boolean isValidFragment(String fragmentName) {
-        return PreferenceFragment.class.getName().equals(fragmentName)
-                || GeneralPreferenceFragment.class.getName().equals(fragmentName)
-                || DataSyncPreferenceFragment.class.getName().equals(fragmentName)
-                || NotificationPreferenceFragment.class.getName().equals(fragmentName);
+    private void setupActionBar() {
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     /**
@@ -198,7 +170,8 @@ public class SettingsActivity extends PreferenceActivity {
         public boolean onOptionsItemSelected(MenuItem item) {
             int id = item.getItemId();
             if (id == android.R.id.home) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
+                startActivity(new Intent(getActivity(), SettingsActivity
+                        .class));
                 return true;
             }
             return super.onOptionsItemSelected(item);
@@ -210,7 +183,8 @@ public class SettingsActivity extends PreferenceActivity {
      * activity is showing a two-pane settings UI.
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static class NotificationPreferenceFragment extends PreferenceFragment {
+    public static class NotificationPreferenceFragment extends
+            PreferenceFragment {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -221,14 +195,16 @@ public class SettingsActivity extends PreferenceActivity {
             // to their values. When their values change, their summaries are
             // updated to reflect the new value, per the Android Design
             // guidelines.
-            bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
+            bindPreferenceSummaryToValue(findPreference
+                    ("notifications_new_message_ringtone"));
         }
 
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
             int id = item.getItemId();
             if (id == android.R.id.home) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
+                startActivity(new Intent(getActivity(), SettingsActivity
+                        .class));
                 return true;
             }
             return super.onOptionsItemSelected(item);
@@ -258,10 +234,48 @@ public class SettingsActivity extends PreferenceActivity {
         public boolean onOptionsItemSelected(MenuItem item) {
             int id = item.getItemId();
             if (id == android.R.id.home) {
-                startActivity(new Intent(getActivity(), SettingsActivity.class));
+                startActivity(new Intent(getActivity(), SettingsActivity
+                        .class));
                 return true;
             }
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setupActionBar();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean onIsMultiPane() {
+        return isXLargeTablet(this);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public void onBuildHeaders(List<Header> target) {
+        loadHeadersFromResource(R.xml.pref_headers, target);
+    }
+
+    /**
+     * This method stops fragment injection in malicious applications.
+     * Make sure to deny any unknown fragments here.
+     */
+    protected boolean isValidFragment(String fragmentName) {
+        return PreferenceFragment.class.getName().equals(fragmentName)
+                || GeneralPreferenceFragment.class.getName().equals
+                (fragmentName)
+                || DataSyncPreferenceFragment.class.getName().equals
+                (fragmentName)
+                || NotificationPreferenceFragment.class.getName().equals
+                (fragmentName);
     }
 }

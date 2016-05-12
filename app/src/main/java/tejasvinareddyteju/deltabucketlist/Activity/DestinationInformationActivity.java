@@ -1,4 +1,4 @@
-package com.example.tejasvinareddyteju.deltabucketlist;
+package tejasvinareddyteju.deltabucketlist.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,9 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import tejasvinareddyteju.deltabucketlist.R;
+import tejasvinareddyteju.deltabucketlist.Model.BucketList;
+import tejasvinareddyteju.deltabucketlist.Model.Destination;
 
 public class DestinationInformationActivity extends Activity {
     private String message_destName;
@@ -40,9 +43,11 @@ public class DestinationInformationActivity extends Activity {
         SeekBar priorityBar = (SeekBar) findViewById(R.id.destinationPriority);
         priorityBar.setMax(10);     // FIXME make a public static final variable
         priorityBar.setProgress(dest.getPriority());
-        priorityBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        priorityBar.setOnSeekBarChangeListener(new SeekBar
+                .OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progresValue, boolean fromUser) {
+            public void onProgressChanged(SeekBar seekBar, int progresValue,
+                                          boolean fromUser) {
                 // FIXME bug not saving values
                 dest.setPriority(progresValue);
             }

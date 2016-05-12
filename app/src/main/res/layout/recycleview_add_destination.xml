@@ -1,76 +1,76 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="100dp">
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
 
     <ImageView
-        android:id="@+id/recyclerAddDestinationIcon"
-        android:layout_width="150dp"
-        android:layout_height="80dp"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:scaleType="centerCrop"
-        android:src="@android:drawable/sym_def_app_icon" />
+            android:id="@+id/recyclerAddDestinationIcon"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:scaleType="centerCrop"
+            android:src="@android:drawable/sym_def_app_icon"/>
 
     <TextView
-        android:id="@+id/recyclerAddDestinationName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/recyclerAddDestinationIcon"
-        android:maxLines="1"
-        android:paddingBottom="0dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="2dp"
-        android:text="Location Name"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/recyclerAddDestinationName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/recyclerAddDestinationIcon"
+            android:maxLines="1"
+            android:paddingBottom="0dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="2dp"
+            android:text="Location Name"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <TextView
-        android:id="@+id/recyclerAddDestinationCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/recyclerAddDestinationName"
-        android:layout_toEndOf="@+id/recyclerAddDestinationIcon"
-        android:paddingBottom="2dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="0dp"
-        android:text="Airport Code: To Set"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/recyclerAddDestinationCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recyclerAddDestinationName"
+            android:layout_toEndOf="@+id/recyclerAddDestinationIcon"
+            android:paddingBottom="2dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="0dp"
+            android:text="Airport Code: To Set"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <TextView
-        android:id="@+id/recyclerAddDestinationAvgCost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/recyclerAddDestinationCode"
-        android:layout_toEndOf="@+id/recyclerAddDestinationIcon"
-        android:paddingBottom="2dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="2dp"
-        android:text="Average Cost: To Set"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/recyclerAddDestinationAvgCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recyclerAddDestinationCode"
+            android:layout_toEndOf="@+id/recyclerAddDestinationIcon"
+            android:paddingBottom="2dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="2dp"
+            android:text="Average Cost: To Set"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <TextView
-        android:id="@+id/recyclerAddDestinationMinCost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/recyclerAddDestinationAvgCost"
-        android:layout_toEndOf="@+id/recyclerAddDestinationIcon"
-        android:paddingBottom="2dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="2dp"
-        android:text="Lowest Cost: To Set"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/recyclerAddDestinationMinCost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recyclerAddDestinationAvgCost"
+            android:layout_toEndOf="@+id/recyclerAddDestinationIcon"
+            android:paddingBottom="2dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="2dp"
+            android:text="Lowest Cost: To Set"
+            android:textAppearance="?android:attr/textAppearanceSmall"/>
 
     <CheckBox
-        android:id="@+id/recyclerAddDestinationCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true" />
+            android:id="@+id/recyclerAddDestinationCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
 
 </RelativeLayout>

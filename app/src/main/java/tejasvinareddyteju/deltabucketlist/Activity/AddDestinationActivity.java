@@ -1,4 +1,4 @@
-package com.example.tejasvinareddyteju.deltabucketlist;
+package tejasvinareddyteju.deltabucketlist.Activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +12,10 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import tejasvinareddyteju.deltabucketlist.R;
+import tejasvinareddyteju.deltabucketlist.Model.BucketList;
+import tejasvinareddyteju.deltabucketlist.Model.Destination;
+import tejasvinareddyteju.deltabucketlist.UI.SimpleDividerItemDecoration;
 
 import java.util.Arrays;
 
@@ -20,29 +24,8 @@ public class AddDestinationActivity extends Activity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_destination);
-        mRecyclerView = (RecyclerView) findViewById(R.id.addLocationsRecyclerView);
-
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        mRecyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        //Add dividers
-        mRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(getApplicationContext()));
-
-        // specify an adapter (see also next example)
-        mAdapter = new RecyclerAdapter(this);
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
-    public static class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+    public static class RecyclerAdapter extends RecyclerView
+            .Adapter<RecyclerAdapter.ViewHolder> {
         private Context m;
         private Destination[] sortedList;
 
@@ -56,13 +39,15 @@ public class AddDestinationActivity extends Activity {
         // Create new views (invoked by the layout manager)
         @Override
         public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_add_destination, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R
+                    .layout.recycleview_add_destination, parent, false);
             ViewHolder vh = new ViewHolder(view);
             return vh;
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, final int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int
+                position) {
             holder.recyclerLocationCheckBox.setOnCheckedChangeListener(null);
 
             //FIXME updating this does not always get called
@@ -72,13 +57,15 @@ public class AddDestinationActivity extends Activity {
                 Arrays.sort(sortedList, new Destination.NameComparator());
             }
 
-            System.out.println("All Destinations = " + Arrays.deepToString(sortedList));
+            System.out.println("All Destinations = " + Arrays.deepToString
+                    (sortedList));
 
             final Destination toAdd = sortedList[position];
             final String name = toAdd.getName();
 
             holder.recyclerLocationName.setText(name);
-            holder.recyclerLocationCode.setText("Airport Code: " + toAdd.getAirportCode());
+            holder.recyclerLocationCode.setText("Airport Code: " + toAdd
+                    .getAirportCode());
 
             // FIXME image sizes too big and cause lag
             holder.recyclerLocationImage.setImageResource(toAdd.getImageId());
@@ -90,7 +77,8 @@ public class AddDestinationActivity extends Activity {
             }
 
             holder.recyclerLocationCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                public void onCheckedChanged(CompoundButton buttonView,
+                                             boolean isChecked) {
                     if (isChecked) {
                         BucketList.addDestination(name);
                         System.out.println(name + " added!");
@@ -119,11 +107,39 @@ public class AddDestinationActivity extends Activity {
 
             public ViewHolder(View view) {
                 super(view);
-                recyclerLocationName = (TextView) view.findViewById(R.id.recyclerAddDestinationName);
-                recyclerLocationCode = (TextView) view.findViewById(R.id.recyclerAddDestinationCode);
-                recyclerLocationImage = (ImageView) view.findViewById(R.id.recyclerAddDestinationIcon);
-                recyclerLocationCheckBox = (CheckBox) view.findViewById(R.id.recyclerAddDestinationCheckBox);
+                recyclerLocationName = (TextView) view.findViewById(R.id
+                        .recyclerAddDestinationName);
+                recyclerLocationCode = (TextView) view.findViewById(R.id
+                        .recyclerAddDestinationCode);
+                recyclerLocationImage = (ImageView) view.findViewById(R.id
+                        .recyclerAddDestinationIcon);
+                recyclerLocationCheckBox = (CheckBox) view.findViewById(R.id
+                        .recyclerAddDestinationCheckBox);
             }
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_destination);
+        mRecyclerView = (RecyclerView) findViewById(R.id
+                .addLocationsRecyclerView);
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        //Add dividers
+        mRecyclerView.addItemDecoration(new SimpleDividerItemDecoration
+                (getApplicationContext()));
+
+        // specify an adapter (see also next example)
+        mAdapter = new RecyclerAdapter(this);
+        mRecyclerView.setAdapter(mAdapter);
     }
 }

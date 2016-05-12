@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.0"
 
     defaultConfig {
-        applicationId "com.example.tejasvinareddyteju.deltabucketlist"
+        applicationId "com.example.tejasvinareddyteju.tejasvinareddyteju.deltabucketlist"
         minSdkVersion 21
         targetSdkVersion 23
         versionCode 1

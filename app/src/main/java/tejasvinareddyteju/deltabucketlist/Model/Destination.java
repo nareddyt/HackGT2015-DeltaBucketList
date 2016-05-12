@@ -1,8 +1,10 @@
-package com.example.tejasvinareddyteju.deltabucketlist;
+package tejasvinareddyteju.deltabucketlist.Model;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+
+import tejasvinareddyteju.deltabucketlist.R;
 
 //TODO add state locations
 //TODO flight integration
@@ -58,40 +60,9 @@ public class Destination implements Comparable<Destination> {
         System.out.println(name + ": Priority = " + priority);
     }
 
-    public int getPriority() {
-        return priority;
-    }
-
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-
-    // TODO an algorithm to get the "best" instances based on all the possible flightsToHere
-    public int getBestCost() {
-        // TODO
-        return -1;
-    }
-
-    public String getBestDateTime() {
-        // TODO
-        return "TO DO";
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getAirportCode() {
-        return airportCode;
-    }
-
     @Override
     public int compareTo(Destination another) {
         return this.getName().compareTo(another.getName());
-    }
-
-    public int getImageId() {
-        return imageId;
     }
 
     public boolean equals(Object other) {
@@ -111,6 +82,38 @@ public class Destination implements Comparable<Destination> {
     @Override
     public String toString() {
         return this.getName();
+    }
+
+    public String getAirportCode() {
+        return airportCode;
+    }
+
+    // TODO an algorithm to get the "best" instances based on all the
+    // possible flightsToHere
+    public int getBestCost() {
+        // TODO
+        return -1;
+    }
+
+    public String getBestDateTime() {
+        // TODO
+        return "TO DO";
+    }
+
+    public int getImageId() {
+        return imageId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
     public static class NameComparator implements Comparator<Destination> {
