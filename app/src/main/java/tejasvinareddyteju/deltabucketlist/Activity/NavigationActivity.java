@@ -15,7 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
-import tejasvinareddyteju.deltabucketlist.Fragment.BlankFragment;
+import tejasvinareddyteju.deltabucketlist.Fragment.BucketListFragment;
+import tejasvinareddyteju.deltabucketlist.Fragment.EditDestinationsFragment;
 import tejasvinareddyteju.deltabucketlist.R;
 
 public class NavigationActivity extends AppCompatActivity implements
@@ -45,11 +46,11 @@ public class NavigationActivity extends AppCompatActivity implements
         // FIXME
         Class fragmentClass = null;
         if (id == R.id.nav_bucketlist) {
-            fragmentClass = BlankFragment.class;
+            fragmentClass = BucketListFragment.class;
         } else if (id == R.id.nav_edit_destinations) {
-            fragmentClass = BlankFragment.class;
+            fragmentClass = EditDestinationsFragment.class;
         } else if (id == R.id.nav_settings) {
-            fragmentClass = BlankFragment.class;
+            // TODO
         } else if (id == R.id.nav_about) {
             // TODO
         }
@@ -120,10 +121,9 @@ public class NavigationActivity extends AppCompatActivity implements
         previousMI.setChecked(true);
         setTitle(previousMI.getTitle());
 
-        // FIXME default fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.mainFrameLayout,
-                BlankFragment.newInstance()).commit();
+                BucketListFragment.newInstance()).commit();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams
